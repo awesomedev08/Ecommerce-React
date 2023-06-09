@@ -1,0 +1,150 @@
+.HeaderDivPcLine {
+  background-color: #FBFBFB;
+}
+
+.logo {
+  width: 63px;
+  height: 63.49px;
+}
+
+.HeaderDivPc {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+  justify-content: center;
+  align-items: center;
+
+}
+.HeaderDivPc-1 {
+  flex-basis: 16%;
+  max-width: 16%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+  align-items: center;
+}
+.HeaderDivPc-2 {
+  flex-basis: 44%;
+  max-width: 44%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.HeaderDivPc-3 {
+  flex-basis: 40%;
+  max-width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.menu {
+  width: 24px;
+  height: 14px;
+  display: none;
+}
+/* responsive */
+@media screen and (max-width: 992px) {
+  .menu {
+    width: 24px;
+    height: 14px;
+    display: inline;
+  }
+
+  .CallNumber,
+  .Deliver-to {
+    display: none !important;
+  }
+  .logo {
+    width: 63px;
+    height: 63.49px;
+  }
+
+  .HeaderDivPc {
+    column-gap: 3px;
+  }
+  .HeaderDivPc-1 {
+    flex-basis: 16%;
+    max-width: 16%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+  .HeaderDivPc-3 {
+    flex-basis: 40%;
+    max-width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    /* margin: 0 auto; */
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 728px) {
+  .HeaderDivPc-1 {
+    column-gap: 7px;
+  }
+  .HeaderDivPc-3 {
+    flex-basis: 31%;
+    max-width: 31%;
+  }
+  .logo {
+    width: 53px;
+    height: 53.49px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .HeaderDivPc-2 {
+    flex-basis: calc(61% - 6px);
+    max-width: calc(61% - 6px);
+    margin-left: 6px;
+  }
+  .HeaderDivPc-3 {
+    flex-basis: 23%;
+    max-width: 23%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    width: 24px;
+    height: 24px;
+  }
+  .HeaderDivPc {
+    justify-content: space-evenly;
+    column-gap: 0;
+  }
+  .HeaderDivPc-3 {
+    flex-basis: 16%;
+    max-width: 16%;
+  }
+  .HeaderDivPc-2 {
+    flex-basis: calc(68% - 11px);
+    max-width: calc(68% - 11px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* margin-left: 15px; */
+    margin: 0 auto;
+    justify-content: center;
+  }
+  .HeaderDivPcLine {
+    border-bottom: 1px solid #F2F2F2;
+    background-color: #FFFFFF;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .SignUp-SignIn span {
+    display: none !important;
+  }
+}

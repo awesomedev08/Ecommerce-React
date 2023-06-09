@@ -1,10 +1,19 @@
 .App {
   text-align: center;
+}
+:root {
+  --white: #fbfbfb;
+  --DarkGray: #a3a3a3;
+  --InkBlue: #0a4b65;
+  --border: #d9d9d9;
+}
+
+body,
+html {
   margin: 0;
   padding: 0;
   border: 0;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -12,8 +21,8 @@
 
 .container {
   max-width: 1440px;
-  margin-left: 70px;
-  margin-right: 70%;
+  width: calc(100% - 140px);
+  margin: 0 auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -44,4 +53,48 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* responsive */
+@media screen and (max-width: 992px) {
+  .container {
+    max-width: 100%;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    width: calc(100% - 24px);
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .SignUp-SignIn span {
+    display: none !important;
+  }
+}
+
+/* font import  */
+
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/fonts/Cairo/static/Cairo-Medium.ttf");
+  font-style: Medium;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/fonts/Cairo/static/Cairo-SemiBold.ttf");
+  font-style: SemiBold;
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/fonts/Cairo/static/Cairo-Bold.ttf");
+  font-style: Bold;
+  font-weight: 700;
 }

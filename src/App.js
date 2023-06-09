@@ -6,7 +6,7 @@ import Header from "./Pages/Header/Header";
 
 function App() {
   return (
-    <div className="App container">
+    <div className="App ">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

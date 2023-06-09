@@ -1,0 +1,38 @@
+/* Deliver-to */
+
+.Deliver-to {
+  display: flex;
+  column-gap: 6px;
+  flex-direction: row;
+}
+
+.Deliver-to-span {
+  display: flex;
+  flex-direction: column;
+}
+
+.Deliver-to-span img {
+  height: 16px;
+  width: 16px;
+}
+.Deliver-to-span span:first-child {
+  font-family: "Cairo";
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+
+  color: var(--DarkGray);
+}
+.Deliver-to-span span:last-child {
+    font-family: 'Cairo';
+    font-style: Medium;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+
+    
+    
+    color: var(--InkBlue);
+
+
+}

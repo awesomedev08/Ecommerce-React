@@ -1,0 +1,128 @@
+.language {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 9px;
+  border-right: 1px solid var(--border);
+  padding-right: 6px;
+  cursor: pointer;
+}
+.language span {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--DarkGray);
+}
+
+/* SignUp-SignIn */
+.SignUp-SignIn {
+  margin-left: 7px;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  border-right: 1px solid var(--border);
+  cursor: pointer;
+}
+.SignUp-SignIn img {
+  width: 24px;
+  height: 24px;
+}
+.SignUp-SignIn span {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  /* identical to box height, or 112% */
+
+  color: var(--InkBlue);
+}
+/* CallNumber */
+.CallNumber {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  padding-right: 13px;
+  border-right: 1px solid var(--border);
+  cursor: pointer;
+  column-gap: 8px;
+}
+.SignUp-SignIn img {
+  width: 24px;
+  height: 24px;
+}
+.CallNumber span {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  letter-spacing: 0.02em;
+
+  color: var(--InkBlue);
+}
+/* HeaderThree-Cart */
+.HeaderThree-Cart {
+  margin-left: 13px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  column-gap: 6px;
+}
+.SignUp-SignIn img {
+  width: 24px;
+  height: 24px;
+}
+.CallNumber span {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+
+  color: var(--InkBlue);
+}
+
+/* responsive */
+@media screen and (max-width: 768px) {
+  .SignUp-SignIn {
+    justify-content: center;
+    padding-right: 7px;
+  }
+  .SignUp-SignIn span {
+    font-family: "Cairo";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    color: var(--InkBlue);
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .language {
+    display: none;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  .HeaderThree-Cart span {
+    display: none;
+  }
+  .SignUp-SignIn {
+    border: none;
+    padding-right: 0px;
+    margin-left: 0px;
+  }
+  .HeaderThree-Cart {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .HeaderThree-Cart span {
+    display: none;
+  }
+}
