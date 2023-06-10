@@ -3,9 +3,13 @@
   flex-direction: row;
   align-items: center;
   column-gap: 9px;
+
+  cursor: pointer;
+}
+
+.languageDivTop {
   border-right: 1px solid var(--border);
   padding-right: 6px;
-  cursor: pointer;
 }
 .language span {
   font-family: "Cairo";
@@ -13,6 +17,29 @@
   font-weight: 500;
   font-size: 16px;
   color: var(--DarkGray);
+  border: none;
+}
+
+.language .MuiSvgIcon-root {
+  display: none;
+}
+.language fieldset {
+  border: none;
+}
+
+.language-FormControl div:first-child {
+  margin: 0;
+  padding: 0;
+  padding-right: 0px;
+}
+.language
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  padding-right: 0;
+}
+
+.language img {
+  width: 24px;
+  height: 24px;
 }
 
 /* SignUp-SignIn */
@@ -105,7 +132,6 @@
   .language {
     display: none;
   }
-  
 }
 
 @media screen and (max-width: 480px) {

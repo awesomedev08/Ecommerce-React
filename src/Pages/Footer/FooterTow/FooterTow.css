@@ -1,0 +1,93 @@
+.FooterTow {
+  flex-basis: 50%;
+  max-width: 50%;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+  column-gap: 76px;
+}
+
+.FooterTow li {
+  list-style: none;
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 37px;
+
+  color: var(--InkBlue);
+}
+.FooterTow li::before {
+  content: "\2022";
+  color: var(--InkBlue);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.FooterTow a {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 37px;
+  color: var(--InkBlue);
+  text-decoration: none;
+}
+
+.FooterTow span {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 20px;
+  color: var(--InkBlue);
+}
+
+.FooterTow-hr {
+  margin: 16px auto 20px auto;
+  border: 1.5px solid var(--InkBlue);
+}
+
+/* responsive */
+@media screen and (max-width: 728px) {
+  .FooterTow {
+    flex-basis: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+    align-items: flex-start;
+    column-gap: 76px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .FooterTow,
+  .FooterTow :is(a) {
+    color: var(--white100);
+    font-family: "Cairo";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 37px;
+  }
+
+  .FooterTow {
+    margin: -12px;
+    padding: 12px;
+    background-color: var(--InkBlue);
+    column-gap: 20px;
+  }
+  .FooterTow :is(span),
+  .FooterTow-hr {
+    display: none;
+  }
+  .FooterTow li::before {
+    color: var(--white100);
+  }
+
+}

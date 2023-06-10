@@ -1,0 +1,132 @@
+.FooterOne {
+  flex-basis: 50%;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.FooterOne-Contact {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-bottom: 38px;
+}
+.FooterOne-Contact-Logo {
+  height: 89px;
+  width: 89px;
+}
+
+.FooterOne-Contact-div-ContactUs {
+  margin-top: 13.5px;
+  text-align: left;
+  padding-left: 10px;
+  row-gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.FooterOne-Contact-span-ContactUs {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+
+  color: var(--InkBlue);
+}
+
+/* FooterOne-Contact-ContactUs-Media */
+.FooterOne-Contact-ContactUs-Media {
+  display: flex;
+  flex-direction: row;
+  column-gap: 11px;
+}
+.FooterOne-Contact-ContactUs-Media div {
+  display: flex;
+  flex-direction: column;
+}
+.FooterOne-Contact-ContactUs-Media div span:first-child {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: var(--InkBlue);
+}
+.FooterOne-Contact-ContactUs-Media div span:last-child {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: var(--InkBlue);
+}
+
+/* responsive */
+@media screen and (max-width: 728px) {
+  .FooterOne {
+    flex-basis: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .FooterOne-Contact-span-ContactUs {
+    display: none;
+  }
+  .FooterOne-Contact {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+  .FooterOne-Contact-div-ContactUs {
+    margin-top: 13.5px;
+    text-align: left;
+    padding-left: 10px;
+    row-gap: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+  .FooterOne-Contact-div-ContactUs img {
+    width: 21.06px;
+    height: 20.72px;
+  }
+  .FooterOneMedia-lg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .FooterOne-Contact-div-ContactUs {
+    margin-top: 13.5px;
+    text-align: left;
+    padding-left: 34px;
+    row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .FooterOne-Contact-ContactUs-Media div span:first-child {
+    font-family: "Cairo";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--InkBlue);
+  }
+  .FooterOne-Contact-ContactUs-Media div span:last-child {
+    font-family: "Cairo";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--InkBlue);
+  }
+}

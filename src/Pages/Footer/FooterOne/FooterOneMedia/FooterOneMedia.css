@@ -1,0 +1,28 @@
+.FooterOneMedia {
+  display: flex;
+  align-items: center;
+  column-gap: 35px;
+}
+
+.FooterOneMedia span {
+    font-family: 'Cairo';
+font-style: normal;
+font-weight: 500;
+font-size: 15px;
+line-height: 28px;
+text-align: center;
+
+color: var(--InkBlue)
+
+}
+.FooterOneMedia-div-in {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  column-gap: 16.26px;
+}
+
+.FooterOneMedia-div-in a img {
+  width: 36.58px;
+  height: 36px;
+}

@@ -36,3 +36,17 @@
 
 
 }
+
+
+/* Deliver-FormControl */
+.Deliver-FormControl div:first-child {
+padding-left: 0;
+}
+.Deliver-FormControl .MuiSvgIcon-root{
+  display: none;
+}
+.Deliver-FormControl fieldset {
+  border: none;
+}
+
+

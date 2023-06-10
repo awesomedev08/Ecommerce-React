@@ -1,6 +1,6 @@
 import { AccountCircle, Search } from "@mui/icons-material";
 import css from "./HeaderTow.css";
-import SearchIcon from "../../assets/icon/search.svg";
+import SearchIcon from "../../../assets/icon/search.svg";
 
 // imports
 
