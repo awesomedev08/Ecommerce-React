@@ -11,6 +11,11 @@
 .FooterTowMedia-sm {
   display: none;
 }
+.FooterBottom {
+  height: 75px;
+
+  background: var(--InkBlue);
+}
 /* responsive */
 @media screen and (max-width: 728px) {
   .Footer {
@@ -47,6 +52,10 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+  }
+
+  .FooterBottom {
+display: none;
   }
 }
 

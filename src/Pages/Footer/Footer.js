@@ -5,7 +5,7 @@ import FooterTow from "./FooterTow/FooterTow";
 import styles from "./Footer.css";
 import FooterOneMedia from "./FooterOne/FooterOneMedia/FooterOneMedia";
 function Footer() {
-  return (
+  return (<>
     <div className="FooterTop">
       <div className="Footer container">
         <FooterOne />
@@ -15,6 +15,8 @@ function Footer() {
         <FooterOneMedia />
       </div>
     </div>
+    <div className="FooterBottom"></div>
+  </>
   );
 }
 

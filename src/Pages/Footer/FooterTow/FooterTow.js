@@ -8,6 +8,7 @@ const baseUrl = "https://api-ecommercereact.onrender.com/api/";
 
 function FooterTow() {
   let [ListServices, setListServices] = useState([]);
+  let [ListCategories, setListCategories] = useState([]);
   useEffect(() => {
     axios
       .get(`${baseUrl}footer-list-services/`)
@@ -17,9 +18,24 @@ function FooterTow() {
       .catch((error) => {
         console.log(error);
       });
+    axios
+      .get(`${baseUrl}footer-lists`)
+      .then((response) => {
+        setListCategories(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   let listServicesMap = ListServices.map((service) => {
+    return (
+      <li key={service.id}>
+        <Link to={`${service.attributes.href}`}>{service.attributes.Name}</Link>
+      </li>
+    );
+  });
+  let ListCategoriesMap = ListCategories.map((service) => {
     return (
       <li key={service.id}>
         <Link to={`${service.attributes.href}`}>{service.attributes.Name}</Link>
@@ -37,32 +53,7 @@ function FooterTow() {
       <div className="FooterTow-List-Tow">
         <span>Customer Services</span>
         <hr className="FooterTow-hr"></hr>
-        <ul>
-          <li>
-            <Link>Staples</Link>
-          </li>
-          <li>
-            <Link>Staples</Link>
-          </li>
-          <li>
-            <Link>Staples</Link>
-          </li>
-          <li>
-            <Link>Staples</Link>
-          </li>
-          <li>
-            <Link>Staples</Link>
-          </li>
-          <li>
-            <Link>Staples</Link>
-          </li>
-          <li>
-            <Link>Staples</Link>
-          </li>
-          <li>
-            <Link>Staples</Link>
-          </li>
-        </ul>
+        <ul>{ListCategoriesMap}</ul>
       </div>
     </div>
   );
