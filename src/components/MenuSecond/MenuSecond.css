@@ -1,0 +1,98 @@
+.MenuSecondTop {
+  height: 75px;
+  background-color: var(--whiteF2);
+  display: flex;
+  align-items: center;
+}
+
+
+.MenuSecond-ul {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.MenuSecond-ul li {
+  list-style: none;
+  height: 25px;
+  width: 100%;
+}
+
+.Dropdown {
+  transition: all 400ms ease-in-out;
+}
+
+.Dropdown-children {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all ease-in-out 400ms;
+}
+
+.Dropdown-children svg {
+  width: 18px;
+  height: 18px;
+
+  color: #0d988c;
+  margin-top: 6px;
+}
+
+/* Dropdown-children-ul */
+.Dropdown-children-ul {
+  background-color: var(--whiteF2);
+  transition: all ease-in-out 400ms;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  display: flex;
+  row-gap: 7px;
+
+}
+.Dropdown-children-ul li {
+    transition: all ease-in-out 100ms;
+}
+.Dropdown-children-ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.Dropdown-children-ul li:hover{ 
+    background-color: #f9f9f9;
+}
+.Dropdown-children-ul-closed {
+  display: none;
+}
+
+
+.Dropdown-children-ul-open {
+  animation: ul-open forwards 400ms ease-in-out;
+  transform-origin: top;
+}
+
+@keyframes ul-open {
+  0% {
+    display: none;
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* responsive */
+@media screen and (max-width: 992px) {
+    .MenuSecondTop {
+       display: none;
+      }
+      
+      
+     
+  }

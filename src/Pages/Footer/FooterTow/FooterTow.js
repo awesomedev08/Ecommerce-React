@@ -4,7 +4,7 @@ import style from "./FooterTow.css";
 import { Link } from "react-router-dom";
 import FooterOneMedia from "../FooterOne/FooterOneMedia/FooterOneMedia";
 
-const baseUrl = "https://api-ecommercereact.onrender.com/api/";
+const baseUrl = "http://localhost:1337/api/";
 
 function FooterTow() {
   let [ListServices, setListServices] = useState([]);

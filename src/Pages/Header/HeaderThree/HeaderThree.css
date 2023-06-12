@@ -45,11 +45,15 @@
 /* SignUp-SignIn */
 .SignUp-SignIn {
   margin-left: 7px;
-  display: flex;
-  align-items: center;
+
   padding-right: 20px;
   border-right: 1px solid var(--border);
   cursor: pointer;
+}
+
+.SignUp-SignIn a {
+  display: flex;
+  align-items: center;
 }
 .SignUp-SignIn img {
   width: 24px;
@@ -93,10 +97,15 @@
 /* HeaderThree-Cart */
 .HeaderThree-Cart {
   margin-left: 13px;
+
+  cursor: pointer;
+}
+
+.HeaderThree-Cart a {
   display: flex;
   align-items: center;
-  cursor: pointer;
   column-gap: 6px;
+  color: var(--InkBlue);
 }
 .SignUp-SignIn img {
   width: 24px;
