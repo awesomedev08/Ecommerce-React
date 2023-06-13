@@ -17,6 +17,13 @@
 - Menu Second is for large devices from max-width: 992px
 - The data comes from the api [name , href]
 
+## 13/6/2023 Many endpoints are created in the API:
+
+- Brand
+- category
+- Prodect
+- Rating & Review
+
 # /_ responsive _/
 
 - max-width: 992px
