@@ -1,0 +1,75 @@
+.welcomePhoto {
+  height: 472px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.welcomePhoto img {
+  height: 472px;
+  width: calc(100% - 2px);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  z-index: -1;
+  position: relative;
+}
+.welcomePhotoBtn {
+  width: 222px;
+  height: 73px;
+  border: 1px solid #d9d9d9;
+  border-radius: 100px;
+  background: var(--white100);
+  position: absolute;
+  bottom: 85px;
+  left: 96px;
+  z-index: 1;
+  color: #e2304f;
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 18px;
+  transition: all ease-in-out 400ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcomePhotoBtn::after {
+  content: "";
+  background-color: #e2304f;
+  width: 0;
+  height: 75px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  display: block;
+  border-radius: inherit;
+  z-index: -1;
+  transform-origin: left top;
+  transition: all ease-in-out 400ms;
+}
+.welcomePhotoBtn:hover::after {
+  width: 224px;
+}
+.welcomePhotoBtn:hover {
+  color: var(--white100);
+}
+
+/* responsive */
+
+@media screen and (max-width: 480px) {
+  .welcomePhotoBtn {
+    width: 165.62px;
+    height: 61.63px;
+    bottom: 168px;
+    left: 12px;
+  }
+  .welcomePhotoBtn:hover::after {
+    width: 165.62px;
+  }.welcomePhotoBtn::after { 
+    
+    height: 61.63px;
+  }
+}

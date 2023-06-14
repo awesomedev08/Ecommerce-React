@@ -6,8 +6,11 @@ import Header from "./Pages/Header/Header";
 import SignUp from "./Pages/Sign/Sign Up/SignUp";
 import Footer from "./Pages/Footer/Footer";
 import MenuSecond from "./components/MenuSecond/MenuSecond";
+import { useEffect, useLayoutEffect } from "react";
 
 function App() {
+ 
+
   return (
     <div className="App ">
       <Header />
@@ -16,7 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

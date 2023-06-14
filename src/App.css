@@ -23,7 +23,6 @@ html {
 
 a {
   text-decoration: none;
-  color: var(--InkBlue);
 }
 .container {
   max-width: 1440px;
