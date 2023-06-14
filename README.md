@@ -1,4 +1,4 @@
-# History of updates
+w NB# History of updates
 
 # 8/6/2023 create project and start development
 
@@ -23,6 +23,9 @@
 - category
 - Prodect
 - Rating & Review
+
+
+## 14/6/2023 home page  > welcomePhoto don
 
 # /_ responsive _/
 
