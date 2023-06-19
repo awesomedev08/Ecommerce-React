@@ -24,15 +24,16 @@ w NB# History of updates
 - Prodect
 - Rating & Review
 
-<<<<<<< HEAD
+## 14/6/2023 home page  > welcomePhoto don
+
 ## 19/6/2023 redux installed, react-redux @reduxjs/toolkit:
 - Reducer has been configured to configure redux to cart
 - Start creating home/FirstCategoty
 - Components/products have been worked on
-=======
 
-## 14/6/2023 home page  > welcomePhoto don
->>>>>>> fe82d27790f1df375221691b611c1c076405c0b0
+
+
+
 
 # /_ responsive _/
 
@@ -42,5 +43,4 @@ w NB# History of updates
 - max-width: 480px
 - max-width: 426px
 - max-width: 320px
-
 - min-width: 993px
