@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import style from "./Home.css";
 import axios from "axios";
 import ImageLoding from "../../hooks/ImageLoding";
+import Category from "./Category/Category";
+import FirstCategoty from "./FirstCategoty/FirstCategoty";
 
 function Home() {
   const [HomeDate, setHomeDate] = useState([]);
@@ -19,14 +21,17 @@ function Home() {
 
   // ==image==
   return (
-    <div className="welcomePhoto">
-      <ImageLoding image={HomeDate}  Class="welcomePhotoImage"/>
-      <Link className="welcomePhotoBtn" to={"#"}>
-        Shop Now{" "}
-      </Link>
+    <div className="Home">
+      <div className="welcomePhoto">
+        {/* <ImageLoding image={"HomeDate"} Class="welcomePhotoImage" /> */}
+        <Link className="welcomePhotoBtn" to={"#"}>
+          Shop Now{" "}
+        </Link>
+      </div>
+      <Category />
+      <FirstCategoty />
     </div>
   );
 }
-
 
 export default Home;

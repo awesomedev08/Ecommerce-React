@@ -24,6 +24,11 @@
 - Prodect
 - Rating & Review
 
+## 19/6/2023 redux installed, react-redux @reduxjs/toolkit:
+- Reducer has been configured to configure redux to cart
+- Start creating home/FirstCategoty
+- Components/products have been worked on
+
 # /_ responsive _/
 
 - max-width: 992px
@@ -32,3 +37,5 @@
 - max-width: 480px
 - max-width: 426px
 - max-width: 320px
+
+- min-width: 993px

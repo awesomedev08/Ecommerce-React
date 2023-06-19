@@ -8,8 +8,14 @@
   --border: #d9d9d9;
   --white100: #ffffff;
   --whiteF2: #F2F2F2;
+  --StormyStraitGreen: #0d988c;
+  --black:#000000;
 }
 
+
+h2 , h4, h5{
+  margin: 0;
+}
 body,
 html {
   margin: 0;

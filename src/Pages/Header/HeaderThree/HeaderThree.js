@@ -16,8 +16,13 @@ import France from "../../../assets/icon/France.svg";
 
 import { Link } from "react-router-dom";
 import UserLocal from "../../../hooks/UserLocal";
+import { useSelector } from "react-redux";
+
+import { Badge } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 function HeaderThree({ Mylanguage, handleChangeMylanguage }) {
+  const productsCount = useSelector((state) => state.cart.products.length);
   return (
     <>
       <div className="languageDivTop">
@@ -62,9 +67,13 @@ function HeaderThree({ Mylanguage, handleChangeMylanguage }) {
         <span>+124563552</span>
       </div>
       <div className="HeaderThree-Cart">
-      <Link to={UserLocal() === null ? "/SignUp" : "/Cart"}> 
-        <img src={Buy} alt="Buy"></img>
-        <span>Cart</span>
+        <Link to={UserLocal() === null ? "/SignUp" : "/Cart"}>
+          <div className="productsCount-div">
+            <img src={Buy} alt="Buy"></img>
+            <span className="productsCount">{productsCount}</span>
+          </div>
+
+          <span>Cart</span>
         </Link>
       </div>
     </>

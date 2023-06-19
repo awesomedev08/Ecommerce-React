@@ -1,0 +1,86 @@
+.product {
+  max-width: 246px;
+  max-height: 391px;
+  cursor: pointer;
+}
+
+.product img {
+  width: 243px;
+  height: 261px;
+}
+
+.product h4 {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 47px;
+  /* identical to box height */
+
+  color: var(--black);
+}
+
+.product-One {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priceDiv {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+.price {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  /* identical to box height, or 120% */
+
+  color: var(--StormyStraitGreen);
+}
+
+.offerPrice {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 30px;
+
+  text-decoration-line: line-through;
+
+  color: var(--DarkGray);
+}
+.product-Rating {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height, or 150% */
+
+  color: var(--DarkGray);
+}
+.product-Rating-star {
+  width: 12px;
+  height: 12px;
+  color: linear-gradient(90deg, #fcd635 0%, #f7a928 100%);
+}
+
+.AddToCart {
+    display: block;
+  width: 245px;
+  height: 35px;
+  background: var(--InkBlue);
+  border-radius: 20px;
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 37px;
+
+  color: var(--white100);
+  margin-top: 17px  ;
+}

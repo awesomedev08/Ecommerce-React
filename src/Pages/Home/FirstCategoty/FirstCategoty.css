@@ -1,0 +1,39 @@
+.FirstCategoty {
+  margin-top: 54px;
+}
+
+.FirstCategoty h2 {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 30px;
+
+  color: var(--StormyStraitGreen);
+  text-align: left;
+}
+
+.FirstCategotyOne {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.FirstCategotyOne a {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 30px;
+
+  color: var(--InkBlue);
+}
+.FirstCategoty-products {
+  display: flex;
+  flex-direction: row;
+  column-gap: 26px;
+  overflow-x: auto ;
+}
+
+.FirstCategoty-products::-webkit-scrollbar {
+  width: 0;
+}

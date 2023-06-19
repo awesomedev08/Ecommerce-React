@@ -1,0 +1,137 @@
+.CategoryTop {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 75px;
+}
+
+.CategoryTop h2 {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 30px;
+  color: var(--StormyStraitGreen);
+}
+.Category {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.Category > div {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+
+  justify-content: space-evenly;
+  width: 132px;
+  height: 172px;
+}
+
+.Category div span {
+  background: #f5f5f5;
+  box-shadow: 4px 40px 16px rgba(0, 0, 0, 0.01),
+    2px 22px 13px rgba(0, 0, 0, 0.03), 1px 10px 10px rgba(0, 0, 0, 0.04),
+    0px 2px 5px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.Category div img {
+  width: 52px;
+  height: 98px;
+  padding: 17px 40px;
+  transition: all ease-in-out 400ms;
+}
+
+.Category div img:hover {
+  transform: scale(1.3);
+}
+/* responsive */
+/* - max-width: 728px
+- max-width: 600px
+- max-width: 480px
+- max-width: 426px
+- max-width: 320px */
+.Category h4 {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  text-align: center;
+  color: var(--black);
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 993px) {
+  .Category div img {
+    width: 40px;
+    height: 83px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .Category > div:nth-child(7) {
+    display: none;
+  }
+  .Category div img {
+    width: 42px;
+    height: 87px;
+    padding: 17px 40px;
+  }
+  /* .Category div span {
+    max-width: 200px;
+    height: 190px;
+  } */
+}
+
+@media screen and (max-width: 728px) {
+  .Category > div:nth-child(6) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .CategoryTop {
+    margin-top: 16px;
+  }
+  .Category > div:nth-child(5) {
+    display: none;
+  }
+  .Category div span {
+    max-width: 100px;
+    height: 87px;
+  }
+  .Category div img {
+    width: 45px;
+    height: 62px;
+    padding: 14px 25px;
+  }
+  .Category > div {
+    justify-content: space-evenly;
+  }
+  .Category h4 {
+    font-family: "Cairo";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+
+    text-align: center;
+
+    color: var(--black);
+  }
+  .CategoryTop h2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .Category div img {
+    width: 26.33px;
+    height: 49.62px;
+    padding: 8px 20px;
+  }
+}
