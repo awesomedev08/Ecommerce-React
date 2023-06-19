@@ -1,4 +1,4 @@
-# History of updates
+w NB# History of updates
 
 # 8/6/2023 create project and start development
 
@@ -24,10 +24,15 @@
 - Prodect
 - Rating & Review
 
+<<<<<<< HEAD
 ## 19/6/2023 redux installed, react-redux @reduxjs/toolkit:
 - Reducer has been configured to configure redux to cart
 - Start creating home/FirstCategoty
 - Components/products have been worked on
+=======
+
+## 14/6/2023 home page  > welcomePhoto don
+>>>>>>> fe82d27790f1df375221691b611c1c076405c0b0
 
 # /_ responsive _/
 
