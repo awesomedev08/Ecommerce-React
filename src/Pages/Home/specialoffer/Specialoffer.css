@@ -143,6 +143,10 @@
   left: 0;
   right: 0;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
 }
 
 .Specialoffer-2 img {
@@ -153,8 +157,34 @@
   position: relative;
 }
 
+.Specialoffer-text {
+  margin-left: 10px;
+  color: var(--StormyStraitGreen);
+  font-family: Cairo;
+  position: relative;
+  row-gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.Specialoffer-2-text1 {
+  font-size: 30px;
 
+  font-weight: 600;
+  line-height: 30px;
+}
+.Specialoffer-2-title {
+  font-size: 63px;
+  color: var(--StormyStraitGreen);
+  font-family: Cairo;
+  font-weight: 700;
+  line-height: 63px;
+}
+.Specialoffer-2-OFF {
+  font-size: 30px;
 
+  font-weight: 600;
+  line-height: 30px;
+}
 /* responsive */
 @media screen and (max-width: 992px) {
   .FirstCircleIn1 {
@@ -204,6 +234,13 @@
   }
 }
 @media screen and (max-width: 600px) {
+  .Specialoffer-text {
+    margin-left: 10px;
+    color: var(--StormyStraitGreen);
+    font-family: Cairo;
+    position: relative;
+    row-gap: 15px;
+  }
   .FirstCircleIn1 {
     width: 548.658px;
   }
@@ -226,15 +263,18 @@
     transform: translateX(12%);
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
+  .SpecialofferTOP {
+    height: 193px;
+  }
   .FirstCircleIn1 {
     width: 386.658px;
-    bottom: 348.81px;
+    bottom: 450.81px;
   }
   .triangle {
-    right: 66px;
-    width: 314px;
-    height: 185px;
+    right: 83px;
+    width: 237px;
+    height: 85px;
   }
   .FirstCircleDIvTow {
     position: absolute;
@@ -242,12 +282,12 @@
     border: 1px solid #3c466b;
     width: 195.668px;
     height: 276.668px;
-    bottom: -167px;
+    bottom: -223px;
     transform: translateX(12%);
   }
   .FirstCircleDIvTow-triangle {
-    width: 224.668px;
-    height: 148.668px;
+    width: 223.668px;
+    height: 94.668px;
     transform: translateX(4%);
   }
   .FirstCircleDIvTow-triangle-inst-right {
@@ -256,16 +296,73 @@
     clip-path: polygon(100% 100%, 0% 100%, 50% 0%);
     position: absolute;
     background-color: #fcfcfc;
-    right: 27px;
+    right: 42px;
+    bottom: 34px;
   }
+
   .FirstCircleDIvTow-triangle-inst-left {
     width: 10px;
-    height: 30px;
+    height: 8px;
     clip-path: polygon(100% 100%, 0% 100%, 50% 0%);
     position: absolute;
     background-color: #fff;
-    left: 27px;
-    bottom: 33px;
+    left: 42px;
+    bottom: 34px;
+  }
+  .FirstCircleDIvTow-triangle-inst {
+    background-color: var(--whiteFc);
+    position: absolute;
+    clip-path: polygon(163% 0, 4% 232%, 0 0%);
+    height: 8px;
+  }
+
+  .triangle-inst {
+    background-color: #fff;
+    position: absolute;
+    z-index: 1;
+    clip-path: polygon(100% 0, 50% 100%, 0 0%);
+    width: 54px;
+    height: 9px;
+    bottom: 0;
+    margin: 0 auto;
+  }
+  .Specialoffer-2 img {
+    width: 139px;
+    height: 140px;
+    margin-top: 20px;
+    z-index: 11;
+    position: relative;
+  }
+
+  .Specialoffer-text {
+    margin-left: 10px;
+    color: var(--InkBlue);
+    font-family: Cairo;
+    position: relative;
+    row-gap: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -51px;
+  }
+  .Specialoffer-2-text1 {
+    font-size: 13px;
+    font-family: Cairo;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--InkBlue);
+  }
+  .Specialoffer-2-title {
+    color: var(--InkBlue);
+    font-size: 15px;
+    font-family: Cairo;
+    font-weight: 700;
+    line-height: 63px;
+  }
+  .Specialoffer-2-OFF {
+    font-size: 13px;
+    font-family: Cairo;
+    font-weight: 600;
+    line-height: 30px;
   }
 }
 @media screen and (max-width: 320px) {

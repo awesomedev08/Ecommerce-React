@@ -14,7 +14,7 @@ function Specialoffer() {
       )
       .then(function (response) {
         //   console.log(response.data.data.attributes.specialoffer[0]);
-        setMyData(response.data.data.attributes.specialoffer[0]);
+        setMyData(response.data?.data.attributes.specialoffer[0]);
       })
       .catch(function (error) {
         console.log(error);
@@ -42,8 +42,16 @@ function Specialoffer() {
       </div>
 
       <div className="Specialoffer-2">
-        <span className="Specialoffer-2-text1"></span>
-        <Link to={"product" + Mydata.prodect?.data.id}>
+        <div className="Specialoffer-text">
+          <span className="Specialoffer-2-text1">{Mydata.text1}</span>
+          <Link to={"product/" + Mydata.prodect?.data.id}>
+            <h4 className="Specialoffer-2-title">{Mydata.title}</h4>
+          </Link>
+          <span className="Specialoffer-2-OFF">
+            UP to {Mydata.UPtoOFF}% OFF
+          </span>
+        </div>
+        <Link to={"product/" + Mydata.prodect?.data.id}>
           <img
             src={
               Mydata.prodect?.data?.attributes?.image?.data[0]?.attributes.url
