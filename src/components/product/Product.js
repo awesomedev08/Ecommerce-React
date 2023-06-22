@@ -1,26 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import style from "./product.css";
 import img1 from "../../assets/Rectangle.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/CartReducer";
-function Product({ price, offerPrice, Rating, id }) {
+function Product({ price, offerprice, Rating, id, img, name, desc }) {
+  //console.log(name.substring(0,30));
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
 
-  let AddtoCart = "Add to Cart";
+  let [AddtoCart, setAddtoCart] = useState("Add to Cart");
   let AddtoCartUrl = "";
   let AddtoCartOK = products.map((product) => product.id === parseInt(id));
 
-  if (AddtoCartOK[0]) {
-    AddtoCart = "Go to Cart";
-    AddtoCartUrl = "/cart";
-  } else {
-    AddtoCart = "Add to Cart";
-    AddtoCartUrl = "";
-  }
+  let productsBtn = useRef();
 
+  useEffect(() => {
+    // console.log(productsBtn.current);
+    productsBtn.current.addEventListener("click", () => {
+      AddtoCartOK.map((product) => {
+        console.log(product);
+        if (product === true) {
+          AddtoCartUrl = "/cart";
+          setAddtoCart("Go to Cart");
+        } else {
+          setAddtoCart("Add to Cart");
+          AddtoCartUrl = "";
+        }
+      });
+    });
+  }, []);
   let isDragging = false;
   let isMouseDown = false;
   let startTime = 0;
@@ -48,6 +58,7 @@ function Product({ price, offerPrice, Rating, id }) {
       isMouseDown = true;
     }, 100);
   };
+  //console.log(price, offerprice);
 
   return (
     <div
@@ -62,17 +73,18 @@ function Product({ price, offerPrice, Rating, id }) {
           if (!isDragging && !isMouseDown) {
             event.preventDefault();
           }
-          console.log(!isDragging && !isMouseDown);
+          //console.log(!isDragging && !isMouseDown);
         }}
       >
-        <img src={img1} alt=""></img>
-        <h4>Jean Shorts</h4>
+        <img src={img} alt={name}></img>
+        <h4>{name.substring(0, 30)}</h4>
 
         <div className="product-One">
           {" "}
           <div className="priceDiv">
-            <span className="price">350$</span>
-            <span className="offerPrice">200$</span>
+            <span className="price">{price}$</span>
+            {offerprice ? <span className="offerPrice">{offerprice}$</span> : "" }
+            
           </div>
           <div>
             {" "}
@@ -83,17 +95,21 @@ function Product({ price, offerPrice, Rating, id }) {
         </div>
       </Link>
       <Link
+        ref={productsBtn}
         to={AddtoCartUrl}
         className="AddToCart"
         onClick={(element) => {
           element.preventDefault();
+        
+      
           dispatch(
             addToCart({
-              id: 1,
-              name: "Jean Shorts",
-              desc: " Jean Shortsdsf sd s s ",
-              img: img1,
-              price: 350,
+              id: id,
+              name: name,
+              desc: desc,
+              img: img,
+              price: price,
+              offerprice: offerprice,
               quantity: 1,
             })
           );

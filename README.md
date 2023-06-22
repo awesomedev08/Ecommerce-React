@@ -24,15 +24,9 @@ w NB# History of updates
 - Prodect
 - Rating & Review
 
-<<<<<<< HEAD
-## 19/6/2023 redux installed, react-redux @reduxjs/toolkit:
-- Reducer has been configured to configure redux to cart
-- Start creating home/FirstCategoty
-- Components/products have been worked on
-=======
 
 ## 14/6/2023 home page  > welcomePhoto don
->>>>>>> fe82d27790f1df375221691b611c1c076405c0b0
+## 22/6/2023 home page  > Special offer
 
 # /_ responsive _/
 

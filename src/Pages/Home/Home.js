@@ -6,6 +6,7 @@ import axios from "axios";
 import ImageLoding from "../../hooks/ImageLoding";
 import Category from "./Category/Category";
 import FirstCategoty from "./FirstCategoty/FirstCategoty";
+import Specialoffer from "./specialoffer/Specialoffer";
 
 function Home() {
   const [HomeDate, setHomeDate] = useState([]);
@@ -30,6 +31,7 @@ function Home() {
       </div>
       <Category />
       <FirstCategoty />
+      <Specialoffer />
     </div>
   );
 }

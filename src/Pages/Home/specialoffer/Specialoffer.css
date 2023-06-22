@@ -1,0 +1,279 @@
+.SpecialofferTOP {
+  height: 535px;
+  border-radius: 16px;
+  background: #fcfcfc;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 100px;
+  position: relative;
+  overflow: hidden;
+  border-right: 10px var(--whiteFc) solid;
+}
+.Specialoffer {
+  height: 535px;
+  border-radius: 16px;
+  background: #fcfcfc;
+  margin-bottom: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.FirstCircle {
+  position: absolute;
+  width: 812.658px;
+  height: 812.658px;
+  border-radius: 812.658px;
+  right: 11px;
+  bottom: 265.81px;
+  border-bottom-right-radius: 575px;
+}
+
+.FirstCircleIn1 {
+  position: absolute;
+  background-color: #3c466b;
+  width: 812.658px;
+  height: 812.658px;
+  border-radius: 812.658px;
+  right: -39px;
+  bottom: 265.81px;
+  border-bottom-right-radius: 775px;
+  border-top-right-radius: 775px;
+}
+
+.FirstCircleIn3 {
+  position: absolute;
+  background-color: #3c466b;
+  width: 273.658px;
+  height: 346px;
+  border-radius: -15%;
+  right: -11px;
+  top: -101px;
+  border-bottom-right-radius: 436px;
+  border-top-right-radius: 124px;
+}
+
+.triangle {
+  position: absolute;
+  right: 90px;
+  width: 597px;
+  height: 268px;
+  background-color: var(--StormyStraitGreen);
+  clip-path: polygon(100% 0, 50% 100%, 0 0%);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.triangle-inst {
+  background-color: #fff;
+  position: absolute;
+  z-index: 1;
+  clip-path: polygon(100% 0, 50% 100%, 0 0%);
+  width: 72px;
+  height: 30px;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+/* FirstCircleDIvTow */
+
+.FirstCircleDIvTow {
+  position: absolute;
+  border-radius: 299.668px;
+  border: 1px solid #3c466b;
+  width: 299.668px;
+  height: 299.668px;
+  bottom: -167px;
+  transform: translateX(142%);
+  background-color: #3c466b;
+  z-index: 2;
+}
+
+.FirstCircleDIvTow-triangle {
+  position: absolute;
+  transform: translateX(134%);
+  width: 309.668px;
+  height: 170.668px;
+  background-color: var(--StormyStraitGreen);
+  clip-path: polygon(100% 100%, 0% 100%, 50% 0%);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  bottom: -37px;
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.FirstCircleDIvTow-triangle-inst {
+  background-color: var(--whiteFc);
+  position: absolute;
+  clip-path: polygon(147% 0, 18% 226%, 0 0%);
+  width: 72px;
+  height: 30px;
+  top: 0;
+  margin: 0 auto;
+}
+
+.FirstCircleDIvTow-triangle-inst-right {
+  width: 10px;
+  height: 30px;
+  clip-path: polygon(100% 100%, 0% 100%, 50% 0%);
+  position: absolute;
+  background-color: #fcfcfc;
+  right: 30px;
+  bottom: 33px;
+}
+.FirstCircleDIvTow-triangle-inst-left {
+  width: 10px;
+  height: 30px;
+  clip-path: polygon(100% 100%, 0% 100%, 50% 0%);
+  position: absolute;
+  background-color: #fff;
+  left: 30px;
+  bottom: 33px;
+}
+
+/* Specialoffer-2 */
+
+.Specialoffer-2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.Specialoffer-2 img {
+  height: 390px;
+  max-width: 100%;
+  margin-top: 76px;
+  z-index: 11;
+  position: relative;
+}
+
+
+
+/* responsive */
+@media screen and (max-width: 992px) {
+  .FirstCircleIn1 {
+    position: absolute;
+    background-color: #3c466b;
+    width: 745.658px;
+    height: 812.658px;
+    border-radius: 812.658px;
+    right: 15px;
+    bottom: 265.81px;
+    border-bottom-right-radius: 775px;
+    border-top-right-radius: 775px;
+  }
+  .FirstCircleIn3 {
+    display: none;
+  }
+  .Specialoffer {
+    height: 535px;
+    border-radius: 16px;
+    background: #fcfcfc;
+    margin-bottom: 100px;
+    position: relative;
+    writing-mode: lr;
+    overflow: hidden;
+    right: 0;
+    margin-right: -44px;
+  }
+}
+
+@media screen and (max-width: 728px) {
+  .FirstCircleIn1 {
+    width: 641.658px;
+  }
+  .triangle {
+    position: absolute;
+    right: 90px;
+    width: 474px;
+  }
+
+  .FirstCircleIn1 {
+    width: 548.658px;
+  }
+  .triangle {
+    position: absolute;
+    right: 70px;
+    width: 449px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .FirstCircleIn1 {
+    width: 548.658px;
+  }
+  .triangle {
+    position: absolute;
+    right: 70px;
+    width: 449px;
+  }
+
+  .FirstCircleDIvTow {
+    position: absolute;
+    border-radius: 299.668px;
+    border: 1px solid #3c466b;
+    width: 299.668px;
+    height: 299.668px;
+    bottom: -167px;
+    transform: translateX(12%);
+  }
+  .FirstCircleDIvTow-triangle {
+    transform: translateX(12%);
+  }
+}
+@media screen and (max-width: 480px) {
+  .FirstCircleIn1 {
+    width: 386.658px;
+    bottom: 348.81px;
+  }
+  .triangle {
+    right: 66px;
+    width: 314px;
+    height: 185px;
+  }
+  .FirstCircleDIvTow {
+    position: absolute;
+    border-radius: 299.668px;
+    border: 1px solid #3c466b;
+    width: 195.668px;
+    height: 276.668px;
+    bottom: -167px;
+    transform: translateX(12%);
+  }
+  .FirstCircleDIvTow-triangle {
+    width: 224.668px;
+    height: 148.668px;
+    transform: translateX(4%);
+  }
+  .FirstCircleDIvTow-triangle-inst-right {
+    width: 10px;
+    height: 30px;
+    clip-path: polygon(100% 100%, 0% 100%, 50% 0%);
+    position: absolute;
+    background-color: #fcfcfc;
+    right: 27px;
+  }
+  .FirstCircleDIvTow-triangle-inst-left {
+    width: 10px;
+    height: 30px;
+    clip-path: polygon(100% 100%, 0% 100%, 50% 0%);
+    position: absolute;
+    background-color: #fff;
+    left: 27px;
+    bottom: 33px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .FirstCircleIn1 {
+    width: 315.658px;
+  }
+  .triangle {
+    right: 59px;
+    width: 249px;
+  }
+}

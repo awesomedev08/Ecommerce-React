@@ -25,7 +25,6 @@ function FirstCategoty() {
     products.current.addEventListener("mouseleave", (e) => {
       e.preventDefault();
       isDragStart.current = false;
-      
     });
   });
   const dragging = (e) => {
@@ -47,35 +46,50 @@ function FirstCategoty() {
     axios
       .get(
         process.env.REACT_APP_URL_API +
-          "home/?populate=firstcategoty.prodects&populate=*&limit=5"
+          "home/?populate=firstcategoty.prodects.image&populate=*"
       )
       .then(function (response) {
-        console.log(
-          response.data.data.attributes.firstcategoty.data.attributes.title
-        );
-        setMyData(response.data.data);
+        // console.log(
+        //   response.data.data.attributes.firstcategoty.data.attributes.prodects.data
+        // );
+       //! setMyData(response.data.data.attributes.firstcategoty);
       })
       .catch(function (error) {
         console.log(error);
       });
   }, []);
+  //console.log(Mydata?.data?.attributes?.prodects?.data);
 
+  let i = 0;
+
+  let productsMAP = Mydata?.data?.attributes?.prodects?.data.map((product) => {
+    if (i >= 5) {
+      return false;
+    }
+    i++;
+    let src = product.attributes;
+ 
+//console.log(src.offerprice);
+    return (
+      <Product
+        id={product.id}
+        key={product.id}
+        name={src.name}
+        img={src.image.data[0].attributes.url}
+        desc={product.desc}
+        price={src.price}
+        offerprice={src.offerprice}
+      />
+    );
+  });
   return (
     <div className="container FirstCategoty">
       <div className="FirstCategotyOne">
-        <h2>
-          {Mydata.attributes !== undefined
-            ? Mydata.attributes.firstcategoty.data.attributes.title
-            : ""}
-        </h2>
-        <Link to={""}>see more</Link>
+        <h2>{Mydata?.data?.attributes.title}</h2>
+        <Link to={"/categoty/" + Mydata?.data?.id}>see more</Link>
       </div>
       <div className="FirstCategoty-products" ref={products}>
-        <Product id="1" />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {productsMAP}
       </div>
     </div>
   );

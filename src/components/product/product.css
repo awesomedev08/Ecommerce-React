@@ -1,6 +1,7 @@
 .product {
-  max-width: 246px;
-  max-height: 391px;
+  
+    max-width: 246px;
+    max-height: 399px;
   cursor: pointer;
 }
 
@@ -15,9 +16,14 @@
   font-weight: 500;
   font-size: 25px;
   line-height: 47px;
-  /* identical to box height */
-
   color: var(--black);
+  height: 47px;
+  max-width: inherit;
+  max-height: inherit;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+
 }
 
 .product-One {

@@ -8,6 +8,7 @@ import Footer from "./Pages/Footer/Footer";
 import MenuSecond from "./components/MenuSecond/MenuSecond";
 import { useEffect, useLayoutEffect } from "react";
 import Cart from "./Pages/Cart/Cart";
+import Categoty from "./Pages/categoty/Categoty";
 
 function App() {
  
@@ -21,6 +22,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:itemId"></Route>
+        <Route path="categoty/:categotyId" element={<Categoty />}></Route>
       </Routes>
       <Footer />
     </div>
