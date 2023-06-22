@@ -24,9 +24,21 @@ w NB# History of updates
 - Prodect
 - Rating & Review
 
+## 14/6/2023 home page > welcomePhoto don
 
-## 14/6/2023 home page  > welcomePhoto don
-## 22/6/2023 home page  > Special offer
+## 22/6/2023 home page > Special offer
+
+=======
+
+## 14/6/2023 home page > welcomePhoto don
+
+## 19/6/2023 redux installed, react-redux @reduxjs/toolkit:
+
+- Reducer has been configured to configure redux to cart
+- Start creating home/FirstCategoty
+- Components/products have been worked on
+
+## 22/6/2023 home page > Special offer
 
 # /_ responsive _/
 
@@ -36,5 +48,4 @@ w NB# History of updates
 - max-width: 480px
 - max-width: 426px
 - max-width: 320px
-
 - min-width: 993px
