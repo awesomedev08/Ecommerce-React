@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import style from "./FirstCategoty.css";
+import style from "./SecondCateoty.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Product from "../../../components/product/Product";
-function FirstCategoty() {
+function SecondCateoty() {
   let products = useRef();
 
   let isDragStart = useRef(false);
@@ -46,13 +46,13 @@ function FirstCategoty() {
     axios
       .get(
         process.env.REACT_APP_URL_API +
-          "home/?populate=firstcategoty.prodects.image&populate=*"
+          "home/?populate=SecondCateoty.prodects.image&populate=*"
       )
       .then(function (response) {
         // console.log(
         //   response.data.data.attributes.firstcategoty.data.attributes.prodects.data
         // );
-        setMyData(response.data.data.attributes.firstcategoty);
+        setMyData(response.data.data.attributes.SecondCateoty);
       })
       .catch(function (error) {
         console.log(error);
@@ -62,14 +62,14 @@ function FirstCategoty() {
 
   let i = 0;
 
+  //console.log(Mydata?.data?.attributes?.prodects?.data);
   let productsMAP = Mydata?.data?.attributes?.prodects?.data.map((product) => {
     if (i >= 5) {
       return false;
     }
     i++;
     let src = product.attributes;
- 
-//console.log(src.offerprice);
+
     return (
       <Product
         id={product.id}
@@ -83,7 +83,7 @@ function FirstCategoty() {
     );
   });
   return (
-    <div className="container FirstCategoty">
+    <div className="container SecondCateoty">
       <div className="FirstCategotyOne">
         <h2>{Mydata?.data?.attributes.title}</h2>
         <Link to={"/categoty/" + Mydata?.data?.id}>see more</Link>
@@ -95,4 +95,4 @@ function FirstCategoty() {
   );
 }
 
-export default FirstCategoty;
+export default SecondCateoty;

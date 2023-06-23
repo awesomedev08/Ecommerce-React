@@ -1,0 +1,264 @@
+.CategotyPage-top {
+  margin-top: 16px;
+}
+
+.Categoty-Category {
+  background: #f0f5f9;
+  margin-bottom: 24px;
+}
+.Categoty-Category h2 {
+  display: none;
+}
+
+.Categoty-Category .CategoryTop {
+  margin-top: 16px;
+}
+
+/* CategotyPage-product */
+.CategotyPage {
+  display: flex;
+  flex-direction: row;
+}
+/* product */
+.CategotyPage-product {
+  flex-basis: 80%;
+  max-width: 80%;
+}
+.CategotyPage-product .product img {
+  width: 180.256px;
+  height: 193.608px;
+  max-width: 100%;
+}
+.CategotyPage-product .AddToCart {
+  max-width: 100%;
+  margin-top: 1px;
+
+  width: 181.739px;
+  height: 25.963px;
+  color: #fff;
+  font-size: 16px;
+  font-family: Cairo;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.CategotyPage-product .product {
+  width: 182.739px;
+  max-height: 292px;
+  margin-bottom: 42px;
+  max-width: 100%;
+}
+.CategotyPage-product .product h4 {
+  font-size: 16px;
+  font-family: Cairo;
+  font-weight: 500;
+  width: 174.697px;
+  height: 33.596px;
+}
+.CategotyPage-product .priceDiv {
+  column-gap: 0px;
+}
+.CategotyPage-product .offerPrice {
+  font-size: 16px;
+  font-family: Cairo;
+  font-weight: 600;
+  line-height: 30px;
+  width: 40.315px;
+  height: 33.596px;
+}
+.CategotyPage-product .price {
+  font-size: 12px;
+  font-family: Cairo;
+  font-weight: 600;
+  line-height: 30px;
+  width: 30.236px;
+  height: 33.596px;
+}
+.CategotyPage-product .product-Rating {
+  font-size: 12px;
+  font-family: Cairo;
+  font-weight: 600;
+  line-height: 30px;
+  width: 25.757px;
+  height: 33.596px;
+}
+.CategotyPage-product .product-Rating-star {
+  width: 8.902px;
+  height: 8.902px;
+}
+/* ==product== */
+.CategotyPage-product-filter {
+  flex-basis: 20%;
+  max-width: 20%;
+}
+
+.CategotyPage-product-filter-Mobile {
+  height: 100px;
+  width: 100%;
+  display: none;
+}
+
+/* Product-Brand */
+.Product-filter-titel {
+  color: var(--InkBlue);
+  font-size: 20px;
+  font-family: Cairo;
+  font-weight: 600;
+  line-height: 30px;
+  border-bottom: 1px solid #0a4b65;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 134px;
+  margin-top: 16px;
+  margin-bottom: 11px;
+}
+.CategotyPage-product-filter
+  .css-j204z7-MuiFormControlLabel-root
+  .MuiFormControlLabel-label {
+  color: var(--StormyStraitGreen);
+  text-align: center;
+  font-size: 16px;
+  font-family: Cairo;
+  line-height: 30px;
+}
+.starDiv {
+  display: flex;
+  flex-direction: row;
+  column-gap: 3px;
+}
+.starDiv img {
+  width: 12px;
+  height: 12px;
+}
+.starDiv span {
+  color: #000;
+  text-align: center;
+  font-size: 12px;
+  font-family: Cairo;
+  font-weight: 200;
+  line-height: 30px;
+}
+
+.PriceFilter {
+  color: var(--StormyStraitGreen);
+  text-align: center;
+  font-size: 15px;
+  font-family: Cairo;
+  line-height: 30px;
+}
+
+.PriceFilter-Search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border: 1px solid #a3a3a3;
+  width: 203px;
+  height: 31px;
+  max-width: 99%;
+  border-radius: 3px;
+
+}
+
+.PriceFilter-Search::placeholder {
+  color: var(--DarkGray);
+  text-align: center;
+  font-size: 12px;
+  font-family: Cairo;
+  line-height: 30px;
+}
+/* Filter By Color */
+.Product-filter-Color label span {
+  color: var(--DarkGray) !important;
+  text-align: center !important;
+  font-size: 15px !important;
+  font-family: Cairo !important;
+  line-height: 30px !important;
+}
+.CheckboxBlue,
+.CheckedboxBlue {
+  background: #5e37ff;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+}
+.CheckedboxBlue {
+  border: 2px solid #000000;
+}
+
+.CheckboxOrange,
+.CheckedboxOrange {
+  background: #ff9437;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+}
+.CheckedboxOrange {
+  border: 2px solid #000000;
+}
+.CheckboxBrown,
+.CheckedboxBrown {
+  background: #ffbf95;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+}
+.CheckedboxBrown {
+  border: 2px solid #000000;
+}
+.CheckboxGreen,
+.CheckedboxGreen {
+  background: #33d221;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+}
+.CheckedboxGreen {
+  border: 2px solid #000;
+}
+.CheckboxPurple,
+.CheckedboxPurple {
+  background: #e248ff;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+}
+.CheckedboxPurple {
+  border: 2px solid #000;
+}
+.CheckboxSky,
+.CheckedboxSky {
+  background: #26cbff;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+}
+.CheckedboxSky {
+  border: 2px solid #000;
+}
+
+/* responsive */
+@media screen and (max-width: 728px) {
+  .CategotyPage-product {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .CategotyPage-product-filter {
+    display: none;
+    flex-basis: 0%;
+    max-width: 0%;
+    background-color: aqua;
+  }
+  .CategotyPage-product-filter-Mobile {
+    display: block;
+    background-color: aqua;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .CategotyPage-product .product h4 {
+    max-width: 100%;
+  }
+  .Categoty-Category {
+    background: var(--white100);
+  }
+}

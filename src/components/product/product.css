@@ -37,18 +37,8 @@ overflow: hidden;
   align-items: center;
   column-gap: 15px;
 }
+
 .price {
-  font-family: "Cairo";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 25px;
-  line-height: 30px;
-  /* identical to box height, or 120% */
-
-  color: var(--StormyStraitGreen);
-}
-
-.offerPrice {
   font-family: "Cairo";
   font-style: normal;
   font-weight: 600;
@@ -58,6 +48,18 @@ overflow: hidden;
   text-decoration-line: line-through;
 
   color: var(--DarkGray);
+}
+
+
+.offerPrice {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  /* identical to box height, or 120% */
+
+  color: var(--StormyStraitGreen);
 }
 .product-Rating {
   font-family: "Cairo";

@@ -26,9 +26,10 @@ function Category() {
     // console.log(category.attributes.image.data.attributes.url);
     // console.log(category.attributes.image.data.attributes.alternativeText);
     let data = category.attributes;
+    //  console.log(category.id);
     return (
-        <div key={category.id}>
-            <Link to={data.title}>
+      <div key={category.id}>
+        <Link to={"/categoty/" + category.id}>
           <span>
             <img
               src={data.image.data.attributes.url}
@@ -36,12 +37,12 @@ function Category() {
             ></img>
           </span>
           <h4>{data.title}</h4>
-      </Link>
-        </div>
+        </Link>
+      </div>
     );
   });
   return (
-    <div className="CategoryTop container">
+    <div className="CategoryTop container" >
       <h2>Shop by Category</h2>
       <div className="Category">{categoryMAP}</div>
     </div>

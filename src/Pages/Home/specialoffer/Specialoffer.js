@@ -21,7 +21,7 @@ function Specialoffer() {
       });
   }, []);
 
-  console.log(Mydata);
+  //console.log(Mydata);
   return (
     <div className="SpecialofferTOP container">
       <div className="Specialoffer">

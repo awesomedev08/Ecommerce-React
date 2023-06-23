@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import style from "./Home.css";
 import axios from "axios";
 import ImageLoding from "../../hooks/ImageLoding";
-import Category from "./Category/Category";
+import Category from "../../components/Category/Category";
 import FirstCategoty from "./FirstCategoty/FirstCategoty";
 import Specialoffer from "./specialoffer/Specialoffer";
+import SecondCateoty from "./secondCateoty/SecondCateoty";
+import CategotyPage from "../categoty/CategotyPage";
 
 function Home() {
   const [HomeDate, setHomeDate] = useState([]);
@@ -24,7 +26,7 @@ function Home() {
   return (
     <div className="Home">
       <div className="welcomePhoto">
-        {/* <ImageLoding image={"HomeDate"} Class="welcomePhotoImage" /> */}
+        <ImageLoding image={HomeDate} Class="welcomePhotoImage" />
         <Link className="welcomePhotoBtn" to={"#"}>
           Shop Now{" "}
         </Link>
@@ -32,6 +34,7 @@ function Home() {
       <Category />
       <FirstCategoty />
       <Specialoffer />
+      <SecondCateoty />
     </div>
   );
 }

@@ -155,7 +155,20 @@
   margin-top: 76px;
   z-index: 11;
   position: relative;
+  animation: image-top-down 1s infinite alternate;
+  transition: all 400ms ease-in-out;
 }
+
+@keyframes image-top-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+
 
 .Specialoffer-text {
   margin-left: 10px;

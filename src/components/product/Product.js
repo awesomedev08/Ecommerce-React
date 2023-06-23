@@ -10,27 +10,33 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
 
-  let [AddtoCart, setAddtoCart] = useState("Add to Cart");
-  let AddtoCartUrl = "";
-  let AddtoCartOK = products.map((product) => product.id === parseInt(id));
+
 
   let productsBtn = useRef();
 
+  let [addToCartH, setAddToCart] = useState({
+    text: "Add to Cart",
+    href: window.location.pathname,
+  });
+  
+  function checkAddToCart() {
+    let href = window.location.pathname;
+    let text = "Add to Cart";
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].id === parseInt(id)) {
+        href = "/Cart";
+        text = "Go to Cart";
+        break;
+      }
+    }
+    setAddToCart({ text, href });
+  }
+  
   useEffect(() => {
-    // console.log(productsBtn.current);
-    productsBtn.current.addEventListener("click", () => {
-      AddtoCartOK.map((product) => {
-        console.log(product);
-        if (product === true) {
-          AddtoCartUrl = "/cart";
-          setAddtoCart("Go to Cart");
-        } else {
-          setAddtoCart("Add to Cart");
-          AddtoCartUrl = "";
-        }
-      });
-    });
-  }, []);
+    checkAddToCart();
+  }, [products]);
+
+  
   let isDragging = false;
   let isMouseDown = false;
   let startTime = 0;
@@ -82,9 +88,12 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
         <div className="product-One">
           {" "}
           <div className="priceDiv">
+            {offerprice ? (
+              <span className="offerPrice">{offerprice}$</span>
+            ) : (
+              ""
+            )}
             <span className="price">{price}$</span>
-            {offerprice ? <span className="offerPrice">{offerprice}$</span> : "" }
-            
           </div>
           <div>
             {" "}
@@ -94,14 +103,13 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
           </div>
         </div>
       </Link>
+     
       <Link
         ref={productsBtn}
-        to={AddtoCartUrl}
+        to={addToCartH.href}
         className="AddToCart"
         onClick={(element) => {
-          element.preventDefault();
-        
-      
+          
           dispatch(
             addToCart({
               id: id,
@@ -113,9 +121,11 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
               quantity: 1,
             })
           );
+
+          checkAddToCart();
         }}
       >
-        {AddtoCart}
+        {addToCartH.text}
       </Link>
     </div>
   );

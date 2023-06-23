@@ -48,4 +48,17 @@ w NB# History of updates
 - max-width: 480px
 - max-width: 426px
 - max-width: 320px
+-
 - min-width: 993px
+
+# var colors
+
+--white: #fbfbfb;
+--DarkGray: #a3a3a3;
+--InkBlue: #0a4b65;
+--border: #d9d9d9;
+--white100: #ffffff;
+--whiteF2: #F2F2F2;
+--whiteFc: #fcfcfc;
+--StormyStraitGreen: #0d988c;
+--black:#000000;
