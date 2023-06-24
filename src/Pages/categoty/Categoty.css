@@ -56,14 +56,13 @@
   height: 33.596px;
 }
 .CategotyPage-product .priceDiv {
-  column-gap: 0px;
+  column-gap: 3.39px;
 }
 .CategotyPage-product .offerPrice {
   font-size: 16px;
   font-family: Cairo;
   font-weight: 600;
   line-height: 30px;
-  width: 40.315px;
   height: 33.596px;
 }
 .CategotyPage-product .price {
@@ -71,7 +70,6 @@
   font-family: Cairo;
   font-weight: 600;
   line-height: 30px;
-  width: 30.236px;
   height: 33.596px;
 }
 .CategotyPage-product .product-Rating {
@@ -156,7 +154,6 @@
   height: 31px;
   max-width: 99%;
   border-radius: 3px;
-
 }
 
 .PriceFilter-Search::placeholder {
@@ -167,6 +164,9 @@
   line-height: 30px;
 }
 /* Filter By Color */
+.Product-filter-Color-Form  {
+  flex-direction: row !important;
+}
 .Product-filter-Color label span {
   color: var(--DarkGray) !important;
   text-align: center !important;

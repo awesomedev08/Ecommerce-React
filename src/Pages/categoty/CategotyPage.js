@@ -33,9 +33,8 @@ import {
   InputBase,
 } from "@mui/material";
 
-
 // PriceFilter-Search-Vector
-import PriceFilterSearchVector from "../../assets/icon/PriceFilter-Search-Vector.svg"
+import PriceFilterSearchVector from "../../assets/icon/PriceFilter-Search-Vector.svg";
 
 // PriceFilter-Search-Vector==
 
@@ -58,26 +57,38 @@ export default function CategotyPage() {
 
   // ==PriceFilter-Search==
 
+  // api
   let params = useParams();
-  // console.log(params.categotyId); // "hotspur"
+  const [categotyId, setcategotyId] = useState(params.categotyId);
 
-  let baseUrl = ` ${process.env.REACT_APP_URL_API}prodects/?populate=image`;
   const [Mydata, setMyData] = useState([]);
+
+  useEffect(() => {
+    setcategotyId(params.categotyId);
+  }, [params.categotyId]);
+
   useEffect(() => {
     axios
-      .get(baseUrl)
+      .get(
+        ` ${process.env.REACT_APP_URL_API}prodects?filters[categoties][id][$eq]=${categotyId}&populate=*`
+      )
       .then(function (response) {
         //  console.log(response.data.data);
         setMyData(response.data.data);
       })
+      .then(() => {
+        console.log(Mydata);
+      })
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [categotyId]);
+  // console.log(params.categotyId); // "hotspur"
 
   let productsMAP = Mydata?.map((product) => {
     let src = product.attributes;
 
+    // ==api==
     // console.log(product);
     return (
       <Grid
@@ -380,98 +391,75 @@ export default function CategotyPage() {
             ></InputBase>
             <div onClick={handleInputToggle}>
               <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-               <img src={PriceFilterSearchVector} alt="" />
+                <img src={PriceFilterSearchVector} alt="" />
               </IconButton>
             </div>
           </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div className="Product-filter-Color">
-
-          <span className="Product-filter-titel ">Filter By Color</span>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<span className="CheckboxBlue"> </span>}
-                  checkedIcon={<span className="CheckedboxBlue"> </span>}
+          <div className="Product-filter-Color">
+            <span className="Product-filter-titel ">Filter By Color</span>
+            <div>
+              <FormGroup className="Product-filter-Color-Form">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      icon={<span className="CheckboxBlue"> </span>}
+                      checkedIcon={<span className="CheckedboxBlue"> </span>}
+                    />
+                  }
+                  label="Blue"
                 />
-              }
-              label="Blue"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<span className="CheckboxOrange"></span>}
-                  checkedIcon={<span className="CheckedboxOrange"></span>}
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      icon={<span className="CheckboxOrange"></span>}
+                      checkedIcon={<span className="CheckedboxOrange"></span>}
+                    />
+                  }
+                  label="Orange"
+                  icon={<img src={CheckedboxIcon} alt="" />}
+                  checkedIcon={<img src={CheckboxIcon} alt="" />}
                 />
-              }
-              label="Orange"
-              icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<span className="CheckboxBrown"></span>}
-                  checkedIcon={<span className="CheckedboxBrown"></span>}
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      icon={<span className="CheckboxBrown"></span>}
+                      checkedIcon={<span className="CheckedboxBrown"></span>}
+                    />
+                  }
+                  label="Brown"
                 />
-              }
-              label="Brown"
-            
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<span className="CheckboxGreen"></span>}
-                  checkedIcon={<span className="CheckedboxGreen"></span>}
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      icon={<span className="CheckboxGreen"></span>}
+                      checkedIcon={<span className="CheckedboxGreen"></span>}
+                    />
+                  }
+                  label="Green"
                 />
-              }
-              label="Green"
-            
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<span className="CheckboxPurple"></span>}
-                  checkedIcon={<span className="CheckedboxPurple"></span>}
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      icon={<span className="CheckboxPurple"></span>}
+                      checkedIcon={<span className="CheckedboxPurple"></span>}
+                    />
+                  }
+                  label="Purple"
                 />
-              }
-              label="Purple"
-            
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<span className="CheckboxSky"></span>}
-                  checkedIcon={<span className="CheckedboxSky"></span>}
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      icon={<span className="CheckboxSky"></span>}
+                      checkedIcon={<span className="CheckedboxSky"></span>}
+                    />
+                  }
+                  label="Sky"
                 />
-              }
-              label="Sky"
-            
-            />
-          
-          </FormGroup>
+              </FormGroup>
             </div>
-
+          </div>
         </div>
-
-
-
-
 
         <div className="CategotyPage-product">
           <Box sx={{ flexGrow: 1 }}>
