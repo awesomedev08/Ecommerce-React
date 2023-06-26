@@ -10,15 +10,13 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
 
-
-
   let productsBtn = useRef();
 
   let [addToCartH, setAddToCart] = useState({
     text: "Add to Cart",
     href: window.location.pathname,
   });
-  
+
   function checkAddToCart() {
     let href = window.location.pathname;
     let text = "Add to Cart";
@@ -31,12 +29,11 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
     }
     setAddToCart({ text, href });
   }
-  
+
   useEffect(() => {
     checkAddToCart();
   }, [products]);
 
-  
   let isDragging = false;
   let isMouseDown = false;
   let startTime = 0;
@@ -93,7 +90,9 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
             ) : (
               ""
             )}
-            <span className="price">{price}$</span>
+            <span className={offerprice ? "price" : "offerPrice"}>
+              {price}$
+            </span>
           </div>
           <div>
             {" "}
@@ -103,13 +102,12 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
           </div>
         </div>
       </Link>
-     
+
       <Link
         ref={productsBtn}
         to={addToCartH.href}
         className="AddToCart"
         onClick={(element) => {
-          
           dispatch(
             addToCart({
               id: id,

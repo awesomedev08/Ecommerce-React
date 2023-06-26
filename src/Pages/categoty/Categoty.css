@@ -97,6 +97,9 @@
 }
 
 /* Product-Brand */
+.productsBrandsMAP {
+  text-align: start;
+}
 .Product-filter-titel {
   color: var(--InkBlue);
   font-size: 20px;

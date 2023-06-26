@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import style from "./Category.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { handleUseFilter } from "../../Pages/categoty/CategotyPage";
 function Category() {
   const [category, setCategory] = useState([]);
   useEffect(() => {
@@ -28,7 +29,13 @@ function Category() {
     let data = category.attributes;
     //  console.log(category.id);
     return (
-      <div key={category.id}>
+      <div
+        onClick={() => {
+          handleUseFilter(false);
+         
+        }}
+        key={category.id}
+      >
         <Link to={"/categoty/" + category.id}>
           <span>
             <img
@@ -42,7 +49,7 @@ function Category() {
     );
   });
   return (
-    <div className="CategoryTop container" >
+    <div className="CategoryTop container">
       <h2>Shop by Category</h2>
       <div className="Category">{categoryMAP}</div>
     </div>

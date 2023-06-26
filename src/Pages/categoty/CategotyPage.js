@@ -6,7 +6,7 @@ import Category from "../../components/Category/Category";
 import SearchIcon from "@mui/icons-material/Search";
 
 // Checkbox
-import CheckboxIcon from "../../assets/icon/uil_check.svg";
+import CheckboxIcon from "../../components/Icon/CheckboxIcon";
 import CheckedboxIcon from "../../assets/icon/uil_check-un.svg";
 import CheckboxIconStormyStraitGreen from "../../assets/icon/uil_check-StormyStraitGreen.svg";
 import CheckedboxIconStormyStraitGreen from "../../assets/icon/uil_check-un-StormyStraitGreen.svg";
@@ -47,6 +47,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 // '' ==
 
+let handleUseFilter;
 export default function CategotyPage() {
   // PriceFilter-Search
 
@@ -59,30 +60,115 @@ export default function CategotyPage() {
 
   // api
   let params = useParams();
-  const [categotyId, setcategotyId] = useState(params.categotyId);
+
+  // searchParams api
+  const [ParamsapiToUrl, setParamsToUrl] = useState("");
+  let url = new URL(
+    ` ${process.env.REACT_APP_URL_API}prodects?filters[categoties][id][$eq]=${params.categotyId}&populate=*${ParamsapiToUrl}`
+  );
+
+  const [Paramsapi, setParams] = useState(url.href);
+  // SearchParams("brands", "append" , "filters[brands][id][$eq]", src.id)
+  const [ParamsapiFilters, setParamsFilters] = useState([]);
+  // SearchParams("brands", "delete" , "filters[brands][id][$eq]", src.id)
+  function SearchParams(name, action, params, value) {
+    if (name === "brands") {
+      if (action === "append") {
+        //   console.log("append");
+        setParamsFilters((oldArray) => [
+          ...oldArray,
+          {
+            params: params,
+            value: value,
+          },
+        ]);
+      }
+      if (action === "delete") {
+        // console.log("delete");
+        setParamsFilters((oldArray) => {
+          const newArray = oldArray.filter((filter) => {
+            return filter.params !== params || filter.value !== value;
+          });
+          return newArray;
+        });
+      }
+    }
+
+    // Cashback
+    if (
+      name === "Cashback" ||
+      name === "Discount" ||
+      name === "Color" ||
+      name === "price"
+    ) {
+      if (action === "append") {
+        //   console.log("append");
+        setParamsFilters((oldArray) => [
+          ...oldArray,
+          {
+            params: params,
+            value: value,
+          },
+        ]);
+      }
+      if (action === "delete") {
+        setParamsFilters((oldArray) => {
+          const newArray = oldArray.filter((filter) => {
+            return filter.params !== params || filter.value !== value;
+          });
+          return newArray;
+        });
+      }
+    }
+    // ==Cashback==
+  }
+
+  useEffect(() => {
+    console.log(ParamsapiFilters);
+    let urlfilter = "";
+
+    ParamsapiFilters.map((filter) => {
+      urlfilter += `&${filter.params}=${filter.value}&`;
+    });
+
+    console.log(urlfilter);
+    setParamsToUrl(urlfilter);
+  }, [ParamsapiFilters]);
+  // ==searchParams api==
+
+  // handleUseFilter
+
+  handleUseFilter = function (set) {
+    SetUseFilter(set);
+    setParamsToUrl("");
+    console.log("handleUseFilter");
+    console.log(set);
+  };
+
+  // ==handleUseFilter==
 
   const [Mydata, setMyData] = useState([]);
 
   useEffect(() => {
-    setcategotyId(params.categotyId);
-  }, [params.categotyId]);
+    setParams(url.href);
+  }, [params.categotyId, ParamsapiToUrl]);
 
   useEffect(() => {
+    console.log(Paramsapi);
+
     axios
-      .get(
-        ` ${process.env.REACT_APP_URL_API}prodects?filters[categoties][id][$eq]=${categotyId}&populate=*`
-      )
+      .get(Paramsapi)
       .then(function (response) {
         //  console.log(response.data.data);
         setMyData(response.data.data);
       })
       .then(() => {
-        console.log(Mydata);
+        //    console.log(Mydata);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, [categotyId]);
+  }, [Paramsapi]);
   // console.log(params.categotyId); // "hotspur"
 
   let productsMAP = Mydata?.map((product) => {
@@ -109,8 +195,75 @@ export default function CategotyPage() {
       </Grid>
     );
   });
+
+  // Product Brand
+
+  const [useFilter, SetUseFilter] = useState(false);
+  const [dataBrand, SetDataBrand] = useState([]);
+
+  useEffect(() => {
+    const ws = [];
+    let productsBrandsFilter = Mydata?.filter((product) => {
+      let src = product?.attributes.brands.data[0];
+      //console.log(product);
+      if (src) {
+        if (!ws?.includes(src?.id)) {
+          ws.push(src?.id);
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
+    let productsBrandsMAP = productsBrandsFilter?.map((product) => {
+      let src = product?.attributes.brands.data[0];
+      //  console.log(src);
+      return (
+        <div key={src.id} className="productsBrandsMAP">
+          <FormControlLabel
+            control={
+              <Checkbox
+                onClick={(e) => {
+                  // console.log("===");
+                  // console.log(src.id);
+                  // console.log(e.target.checked);
+                  SetUseFilter(true);
+                  if (e.target.checked) {
+                    SearchParams(
+                      "brands",
+                      "append",
+                      "filters[brands][id][$eq]",
+                      src.id
+                    );
+                  } else {
+                    SearchParams(
+                      "brands",
+                      "delete",
+                      "filters[brands][id][$eq]",
+                      src.id
+                    );
+                  }
+                }}
+                icon={<img src={CheckedboxIcon} alt="" />}
+                checkedIcon={<CheckboxIcon />}
+                inputProps={{ "aria-label": "Checkbox" }}
+              />
+            }
+            label={src.attributes?.Brand}
+          />
+        </div>
+      );
+    });
+    //console.log(productsBrandsFilter);
+    if (!useFilter) {
+      SetDataBrand(productsBrandsMAP);
+    }
+  }, [Mydata]);
+
+  // ==Product Brand==
   return (
     <div className="CategotyPage-top">
+      {/* {console.log(dataBrand)} */}
       <div className="Categoty-Category">
         <Category />
       </div>
@@ -119,81 +272,37 @@ export default function CategotyPage() {
       <div className="CategotyPage container">
         <div className="CategotyPage-product-filter">
           <span className="Product-filter-titel">Product Brand</span>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  defaultChecked
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="Coaster Furniture"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="Fusion Dot High Fashion"
-              icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="Unique Furnitture Restor"
-              icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="Dream Furnitture Flipping"
-              icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="Young Repurposed"
-              icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="Green DIY furniture"
-              icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
-            />
-          </FormGroup>
+          <FormGroup>{dataBrand}</FormGroup>
 
           <span className="Product-filter-titel">Discount Offer</span>
           <FormGroup>
             <FormControlLabel
               control={
                 <Checkbox
+                  onClick={(e) => {
+                    console.log("===");
+                    console.log("20% Cashback");
+                    console.log(e.target.checked);
+
+                    SetUseFilter(true);
+                    if (e.target.checked) {
+                      SearchParams(
+                        "Cashback",
+                        "append",
+                        "filters[Cashback][$lte]",
+                        20
+                      );
+                    } else {
+                      SearchParams(
+                        "Cashback",
+                        "delete",
+                        "filters[Cashback][$lte]",
+                        20
+                      );
+                    }
+                  }}
                   icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
+                  checkedIcon={<CheckboxIcon />}
                 />
               }
               label="20% Cashback"
@@ -201,24 +310,66 @@ export default function CategotyPage() {
             <FormControlLabel
               control={
                 <Checkbox
+                  onClick={(e) => {
+                    console.log("===");
+                    console.log("5% Cashback Offer");
+                    console.log(e.target.checked);
+                    SetUseFilter(true);
+                    if (e.target.checked) {
+                      SearchParams(
+                        "Cashback",
+                        "append",
+                        "filters[Cashback][$lte]",
+                        5
+                      );
+                    } else {
+                      SearchParams(
+                        "Cashback",
+                        "delete",
+                        "filters[Cashback][$lte]",
+                        5
+                      );
+                    }
+                  }}
                   icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
+                  checkedIcon={<CheckboxIcon />}
                 />
               }
               label="5% Cashback Offer"
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
+              checkedIcon={<CheckboxIcon />}
             />
             <FormControlLabel
               control={
                 <Checkbox
+                  onClick={(e) => {
+                    console.log("===");
+                    console.log("25% Discount Offer");
+                    console.log(e.target.checked);
+                    SetUseFilter(true);
+                    if (e.target.checked) {
+                      SearchParams(
+                        "Discount",
+                        "append",
+                        "filters[Discount][$lte]",
+                        25
+                      );
+                    } else {
+                      SearchParams(
+                        "Discount",
+                        "delete",
+                        "filters[Discount][$lte]",
+                        25
+                      );
+                    }
+                  }}
                   icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
+                  checkedIcon={<CheckboxIcon />}
                 />
               }
               label="25% Discount Offer"
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
+              checkedIcon={<CheckboxIcon />}
             />
           </FormGroup>
 
@@ -301,84 +452,159 @@ export default function CategotyPage() {
             />
           </FormGroup>
 
-          <span className="Product-filter-titel">Discount Offer</span>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="20% Cashback"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="5% Cashback Offer"
-              icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
-                />
-              }
-              label="25% Discount Offer"
-              icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
-            />
-          </FormGroup>
-
           <span className="Product-filter-titel">Price Filter</span>
           <FormGroup>
             <FormControlLabel
               control={
                 <Checkbox
+                  onClick={(e) => {
+                    console.log("===");
+                    console.log("$0.00 - $150.00");
+                    console.log(e.target.checked);
+
+                    SetUseFilter(true);
+                    if (e.target.checked) {
+                      SearchParams(
+                        "price",
+                        "append",
+                        "filters[price][$lte]",
+                        150
+                      );
+                    } else {
+                      SearchParams(
+                        "price",
+                        "delete",
+                        "filters[price][$lte]",
+                        150
+                      );
+                    }
+                  }}
                   icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
+                  checkedIcon={<CheckboxIcon />}
                 />
               }
-              label={<div className="PriceFilter">$0.00 - $150.00</div>}
+              label="$0.00 - $150.00"
             />
             <FormControlLabel
               control={
                 <Checkbox
+                  onClick={(e) => {
+                    console.log("===");
+                    console.log("$150.00 - $350.00");
+                    console.log(e.target.checked);
+                    SetUseFilter(true);
+                    if (e.target.checked) {
+                      SearchParams(
+                        "price",
+                        "append",
+                        "filters[price][$gte]",
+                        150
+                      );
+                      SearchParams(
+                        "price",
+                        "append",
+                        "filters[price][$lte]",
+                        350
+                      );
+                    } else {
+                      SearchParams(
+                        "price",
+                        "delete",
+                        "filters[price][$gte]",
+                        150
+                      );
+                      SearchParams(
+                        "price",
+                        "delete",
+                        "filters[price][$lte]",
+                        350
+                      );
+                    }
+                  }}
                   icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
+                  checkedIcon={<CheckboxIcon />}
                 />
               }
-              label={<div className="PriceFilter">$150.00 - $350.00</div>}
+              label="$150.00 - $350.00"
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
+              checkedIcon={<CheckboxIcon />}
             />
             <FormControlLabel
               control={
                 <Checkbox
+                  onClick={(e) => {
+                    console.log("===");
+                    console.log("$150.00 - $504.00");
+                    console.log(e.target.checked);
+                    SetUseFilter(true);
+                    if (e.target.checked) {
+                      SearchParams(
+                        "price",
+                        "append",
+                        "filters[price][$gte]",
+                        150
+                      );
+                      SearchParams(
+                        "price",
+                        "append",
+                        "filters[price][$lte]",
+                        504
+                      );
+                    } else {
+                      SearchParams(
+                        "price",
+                        "delete",
+                        "filters[price][$gte]",
+                        150
+                      );
+                      SearchParams(
+                        "price",
+                        "delete",
+                        "filters[price][$lte]",
+                        504
+                      );
+                    }
+                  }}
                   icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
+                  checkedIcon={<CheckboxIcon />}
                 />
               }
-              label={<div className="PriceFilter">$150.00 - $504.00</div>}
+              label="$150.00 - $504.00"
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
+              checkedIcon={<CheckboxIcon />}
             />
+
             <FormControlLabel
               control={
                 <Checkbox
+                  onClick={(e) => {
+                    console.log("===");
+                    console.log("$450.00 +");
+                    console.log(e.target.checked);
+                    SetUseFilter(true);
+                    if (e.target.checked) {
+                      SearchParams(
+                        "price",
+                        "append",
+                        "filters[price][$gte]",
+                        450
+                      );
+                    } else {
+                      SearchParams(
+                        "price",
+                        "delete",
+                        "filters[price][$gte]",
+                        450
+                      );
+                    }
+                  }}
                   icon={<img src={CheckedboxIcon} alt="" />}
-                  checkedIcon={<img src={CheckboxIcon} alt="" />}
+                  checkedIcon={<CheckboxIcon />}
                 />
               }
-              label={<div className="PriceFilter">$450.00 +</div>}
+              label="$450.00 +"
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
+              checkedIcon={<CheckboxIcon />}
             />
           </FormGroup>
 
@@ -388,6 +614,10 @@ export default function CategotyPage() {
               placeholder="$10.00 - 20000$"
               inputProps={{ "aria-label": "$10.00 - 20000$" }}
               inputRef={inputRef}
+              onChange={(e) => {
+                console.log(e.target.value);
+              }}
+              type="number"
             ></InputBase>
             <div onClick={handleInputToggle}>
               <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
@@ -403,6 +633,9 @@ export default function CategotyPage() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      onClick={() => {
+                        console.log("Blue");
+                      }}
                       icon={<span className="CheckboxBlue"> </span>}
                       checkedIcon={<span className="CheckedboxBlue"> </span>}
                     />
@@ -412,6 +645,9 @@ export default function CategotyPage() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      onClick={() => {
+                        console.log("Orange");
+                      }}
                       icon={<span className="CheckboxOrange"></span>}
                       checkedIcon={<span className="CheckedboxOrange"></span>}
                     />
@@ -423,6 +659,9 @@ export default function CategotyPage() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      onClick={() => {
+                        console.log("Brown");
+                      }}
                       icon={<span className="CheckboxBrown"></span>}
                       checkedIcon={<span className="CheckedboxBrown"></span>}
                     />
@@ -432,6 +671,9 @@ export default function CategotyPage() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      onClick={() => {
+                        console.log("Green");
+                      }}
                       icon={<span className="CheckboxGreen"></span>}
                       checkedIcon={<span className="CheckedboxGreen"></span>}
                     />
@@ -441,6 +683,9 @@ export default function CategotyPage() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      onClick={() => {
+                        console.log("Purple");
+                      }}
                       icon={<span className="CheckboxPurple"></span>}
                       checkedIcon={<span className="CheckedboxPurple"></span>}
                     />
@@ -450,6 +695,9 @@ export default function CategotyPage() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      onClick={() => {
+                        console.log("Sky");
+                      }}
                       icon={<span className="CheckboxSky"></span>}
                       checkedIcon={<span className="CheckedboxSky"></span>}
                     />
@@ -477,3 +725,5 @@ export default function CategotyPage() {
     </div>
   );
 }
+
+export { handleUseFilter };
