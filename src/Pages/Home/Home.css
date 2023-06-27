@@ -3,6 +3,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  z-index: -1;
 }
 .welcomePhoto img {
   height: 472px;

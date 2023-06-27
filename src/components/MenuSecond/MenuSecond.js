@@ -38,6 +38,7 @@ function MenuSecond() {
       return (
         <MenuSecondLi
           key={person.id}
+          id={person.id}
           Dropdown={person.attributes.dropdown}
           children={person.attributes.name}
           href={person.attributes.href}

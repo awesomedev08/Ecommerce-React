@@ -185,7 +185,7 @@
   border-radius: 14px;
 }
 .CheckedboxBlue {
-  border: 2px solid #000000;
+  border: 3px solid #000000;
 }
 
 .CheckboxOrange,
@@ -196,7 +196,7 @@
   border-radius: 14px;
 }
 .CheckedboxOrange {
-  border: 2px solid #000000;
+  border: 3px solid #000000;
 }
 .CheckboxBrown,
 .CheckedboxBrown {
@@ -206,7 +206,7 @@
   border-radius: 14px;
 }
 .CheckedboxBrown {
-  border: 2px solid #000000;
+  border: 3px solid #000000;
 }
 .CheckboxGreen,
 .CheckedboxGreen {
@@ -216,7 +216,7 @@
   border-radius: 14px;
 }
 .CheckedboxGreen {
-  border: 2px solid #000;
+  border: 3px solid #000;
 }
 .CheckboxPurple,
 .CheckedboxPurple {
@@ -226,7 +226,7 @@
   border-radius: 14px;
 }
 .CheckedboxPurple {
-  border: 2px solid #000;
+  border: 3px solid #000;
 }
 .CheckboxSky,
 .CheckedboxSky {
@@ -236,7 +236,7 @@
   border-radius: 14px;
 }
 .CheckedboxSky {
-  border: 2px solid #000;
+  border: 3px solid #000;
 }
 
 /* responsive */

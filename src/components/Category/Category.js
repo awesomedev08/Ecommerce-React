@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import style from "./Category.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { handleUseFilter } from "../../Pages/categoty/CategotyPage";
+import { Link, useParams } from "react-router-dom";
+import { handleUseFilter } from "../../Pages/categoty/Filter";
 function Category() {
   const [category, setCategory] = useState([]);
   useEffect(() => {
@@ -21,6 +21,7 @@ function Category() {
       });
   }, []);
 
+  let params = useParams();
   let categoryMAP = category.map((category) => {
     // console.log(category.attributes);
     // console.log(category.attributes.title);
@@ -28,11 +29,13 @@ function Category() {
     // console.log(category.attributes.image.data.attributes.alternativeText);
     let data = category.attributes;
     //  console.log(category.id);
+
     return (
       <div
         onClick={() => {
-          handleUseFilter(false);
-         
+          if (params.categotyId) {
+            handleUseFilter(false);
+          }
         }}
         key={category.id}
       >
