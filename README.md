@@ -40,6 +40,8 @@ w NB# History of updates
 
 ## 22/6/2023 home page > Special offer
 
+## 1/7/2023 Product > ProductDetails
+
 # /_ responsive _/
 
 - max-width: 992px

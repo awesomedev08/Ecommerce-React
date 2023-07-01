@@ -34,18 +34,23 @@ let FParamsFilters;
 export default function CategotyPage() {
   // api
   let params = useParams();
+  let paramsFilters = `filters[name][$containsi]=${params.filter}`;
 
+  //console.log(params.filter);
+  if (params.filter === null || params.filter === undefined) {
+    paramsFilters = "";
+  }
   // searchParams api
   const [ParamsapiToUrl, setParamsToUrl] = useState("");
   let url = new URL(
-    ` ${process.env.REACT_APP_URL_API}prodects?filters[categoties][id][$eq]=${params.categotyId}&populate=*${ParamsapiToUrl}`
+    ` ${process.env.REACT_APP_URL_API}prodects?filters[categoties][id][$eq]=${params.categotyId}&populate=*${ParamsapiToUrl}&${paramsFilters}`
   );
 
   const [Paramsapi, setParams] = useState(url.href);
 
   useEffect(() => {
     setParams(url.href);
-  }, [params.categotyId, ParamsapiToUrl]);
+  }, [params.categotyId, ParamsapiToUrl, params.filter]);
 
   // SearchParams("brands", "append" , "filters[brands][id][$eq]", src.id)
   const [ParamsapiFilters, setParamsFilters] = useState([]);

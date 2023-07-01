@@ -14,12 +14,26 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
 
-function MenuSecondLi({ Dropdown, color, children, href, dropdownlis, id }) {
+function MenuSecondLi({
+  Dropdown,
+  color,
+  children,
+  href,
+  dropdownlis,
+  id,
+  categoty,
+}) {
+  //console.log(categoty);
+
+  if (categoty) {
+    id = "";
+  }
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
+
   if (Dropdown) {
     return (
       <li style={{ color: color }} onClick={handleClick}>
@@ -37,7 +51,7 @@ function MenuSecondLi({ Dropdown, color, children, href, dropdownlis, id }) {
           {dropdownlis.map((li) => (
             <li key={li.id}>
               <Link
-                to={li.attributes.href + "/" + li.id}
+                to={li.attributes.href + "/" }
                 style={{ color: color }}
               >
                 {li.attributes.name}

@@ -10,10 +10,9 @@ import { useEffect, useLayoutEffect } from "react";
 import Cart from "./Pages/Cart/Cart";
 import CategotyPage from "./Pages/categoty/CategotyPage";
 import Pagecustom from "./Pages/pagecustom/Pagecustom";
+import Product from "./Pages/product/Product";
 
 function App() {
- 
-
   return (
     <div className="App ">
       <Header />
@@ -22,8 +21,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/product/:itemId"></Route>
+        <Route path="/product/:itemId" element={<Product />}></Route>
         <Route path="Categoty/:categotyId" element={<CategotyPage />}></Route>
+        <Route
+          path="Categoty/:categotyId/:filter"
+          element={<CategotyPage />}
+        ></Route>
         <Route path="Pagecustom/:key/:id" element={<Pagecustom />}></Route>
       </Routes>
       <Footer />

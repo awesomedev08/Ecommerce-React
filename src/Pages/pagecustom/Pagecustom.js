@@ -14,7 +14,9 @@ import { useParams } from "react-router-dom";
 function Pagecustom() {
   const params = useParams();
   const [Mydata, setMyData] = useState([]);
+  const [h1, seth1] = useState([]);
   const [loading, setloading] = useState(false);
+
   useEffect(() => {
     setloading(false);
     // console.log(Paramsapi);
@@ -34,9 +36,21 @@ function Pagecustom() {
         console.log(error);
       });
   }, [params.key]);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_URL_API}menu-seconds/${params.id}`)
 
+      .then(function (response) {
+        //  console.log(response.data.data);
+        seth1(response.data.data.attributes);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [params.id]);
   return (
     <>
+      <h1 style={{ color: h1.color }}>{h1.name}</h1>
       <ProductGroup data={Mydata} doneLoading={loading} />
     </>
   );

@@ -32,6 +32,7 @@ function MenuSecond() {
           href={person.attributes.href}
           color={person.attributes.color}
           dropdownlis={person.attributes.dropdownlis.data}
+          categoty={person.attributes.categoty}
         />
       );
     } else {
@@ -43,6 +44,7 @@ function MenuSecond() {
           children={person.attributes.name}
           href={person.attributes.href}
           color={person.attributes.color}
+          categoty={person.attributes.categoty}
         />
       );
     }
