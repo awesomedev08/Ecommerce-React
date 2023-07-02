@@ -1,0 +1,16 @@
+.ProductDetailsTabs-Title {
+  color: var(--text) !important;
+  font-size: 24px !important;
+  font-family: Cairo !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: normal !important;
+  /* text-decoration-line: underline; */
+  padding: 0 !important;
+  margin: 12px 16px !important;
+}
+
+.css-1aquho2-MuiTabs-indicator {
+  background-color: #151875 !important;
+  bottom: 21px !important;
+}

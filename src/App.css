@@ -7,14 +7,16 @@
   --InkBlue: #0a4b65;
   --border: #d9d9d9;
   --white100: #ffffff;
-  --whiteF2: #F2F2F2;
+  --whiteF2: #f2f2f2;
   --whiteFc: #fcfcfc;
   --StormyStraitGreen: #0d988c;
-  --black:#000000;
+  --black: #000000;
+  --text: #151875;
 }
 
-
-h2 , h4, h5{
+h2,
+h4,
+h5 {
   margin: 0;
 }
 body,

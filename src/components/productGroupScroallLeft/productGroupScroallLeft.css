@@ -1,0 +1,63 @@
+.productGroupScroallLeft {
+  margin-top: 40px;
+  margin-bottom: 131px;
+}
+
+.productGroupScroallLeft h2 {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 30px;
+
+  color: var(--StormyStraitGreen);
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.productGroupScroallLeftOne {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.productGroupScroallLeftOne a {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 30px;
+
+  color: var(--InkBlue);
+}
+.productGroupScroallLeftOne-products {
+  display: flex;
+  flex-direction: row;
+  column-gap: 26px;
+  overflow-x: auto;
+}
+
+.productGroupScroallLeftOne-products::-webkit-scrollbar {
+  width: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .FirstCategoty h2 {
+    font-family: "Cairo";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+
+    color: var(--StormyStraitGreen);
+    text-align: left;
+    padding-bottom: 10px;
+  }
+  .productGroupScroallLeftOne a {
+    font-family: "Cairo";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 30px;
+    color: #fcd635;
+  }
+}
