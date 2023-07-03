@@ -49,7 +49,7 @@ function ProductGroupScroallLeft({ data, doneLoading }) {
     if (doneLoading) {
       setloading(true);
     }
-    console.log(data);
+   // console.log(data);
   }, [data]);
   //console.log(Mydata?.data?.attributes?.prodects?.data);
 

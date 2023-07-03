@@ -7,7 +7,7 @@ import COMPLoading from "../../components/loading/COMPLoading";
 import ProductDetails from "./ProductDetails";
 function Product() {
   let params = useParams();
-  console.log(params.itemId); // "hotspur"
+//  console.log(params.itemId); // "hotspur"
 
   const [Mydata, setMyData] = useState([]);
   const [loading, setloading] = useState(false);
@@ -32,7 +32,15 @@ function Product() {
       });
   }, [params.itemId]);
 
-  return <div>{loading ? <ProductDetails /> : <COMPLoading />}</div>;
+  return (
+    <div>
+      {loading ? (
+        <ProductDetails Mydata={Mydata}  />
+      ) : (
+        <COMPLoading />
+      )}
+    </div>
+  );
 }
 
 export default Product;

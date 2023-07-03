@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import style from "./ProductDetails.css";
 
@@ -23,48 +23,142 @@ import ProductGroup from "../../components/productGroup/ProductGroup";
 import axios from "axios";
 import ProductGroupScroallLeft from "../../components/productGroupScroallLeft/ProductGroupScroallLeft";
 
-function ProductDetails() {
+function ProductDetails({ Mydata }) {
   const params = useParams();
-  const [Mydata, setMyData] = useState([]);
-  const [loading, setloading] = useState(false);
+  const [MydataCategoties, setMyDataCategoties] = useState([]);
+  const [loadingCategoties, setloadingCategoties] = useState(false);
+  const [MydataProduct, setMyDataProduct] = useState([]);
+  useEffect(() => {
+    setMyDataProduct(Mydata);
+  }, [Mydata]);
 
   useEffect(() => {
-    setloading(false);
-    // console.log(Paramsapi);
-    axios
-      .get(
-        `${process.env.REACT_APP_URL_API}categoties/2/?populate=prodects.image`
-      )
-      .then(function (response) {
-        //  console.log(response.data.data);
-        setMyData(response.data);
-      })
-      .then(() => {
-        setloading(true);
-        //    console.log(Mydata);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
+    setloadingCategoties(false);
+    // console.log(params.itemId);
+    if (MydataProduct.attributes?.categoties?.data[0].id !== undefined) {
+      axios
+        .get(
+          `${process.env.REACT_APP_URL_API}categoties/${MydataProduct.attributes?.categoties?.data[0].id}/?populate=prodects.image`
+        )
+        .then(function (response) {
+          //  console.log(response.data.data);
+          setMyDataCategoties(response.data);
+        })
+        .then(() => {
+          setloadingCategoties(true);
+          //    console.log(Mydata);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
     //  console.log(Mydata);
-  }, [params.key]);
+  }, [MydataProduct]);
+
+  let PremierImg = useRef();
+  useEffect(() => {
+    document.querySelectorAll(".ProductDetailsImg img").forEach((img) => {
+      img.addEventListener("click", (event) => {
+        PremierImg.current.src = event.target.src;
+
+        document.querySelectorAll(".ProductDetailsImg img").forEach((img) => {
+          img.classList.remove("ProductDetailsImgBorder");
+        });
+        event.target.classList.add("ProductDetailsImgBorder");
+      });
+    });
+  });
 
   const [Quantity, setQuantity] = useState(1);
+
+  //console.log(MydataProduct);
+
+  //  mapImg
+  let mapImgNum = 0;
+  let mapImgFilter = MydataProduct?.attributes?.image?.data.filter((img) => {
+    // console.log(MydataProduct?.attributes?.image?.data.length > 1);
+    if (MydataProduct?.attributes?.image?.data.length > 1) {
+      if (mapImgNum > 0) {
+        return img;
+      }
+    }
+    mapImgNum++;
+  });
+  // console.log(mapImgFilter);
+
+  let mapImg = mapImgFilter?.map((img) => {
+    return (
+     
+        <img key={img.id} src={img.attributes.url} alt=""></img>
+     
+    );
+  });
+  //  ==mapImg==
+
   return (
     <>
       <div className="container ProductDetails">
-        <h3 className="ProductDetails-title-mobile">Related Products</h3>
-        <div className="ProductDetailsImg">
-          <img src={img1} alt=""></img>
-          <img src={img2} alt=""></img>
-          <img src={img3} alt=""></img>
-        </div>
+        <h3 className="ProductDetails-title-mobile">
+          {MydataProduct.attributes?.name}
+
+          <div className="priceDiv">
+            {MydataProduct.attributes?.offerprice ? (
+              <span className="offerPrice">
+                {MydataProduct.attributes?.offerprice}$
+              </span>
+            ) : (
+              ""
+            )}
+            <span
+              className={
+                MydataProduct.attributes?.offerprice ? "price" : "offerPrice"
+              }
+            >
+              {MydataProduct.attributes?.price}$
+            </span>
+          </div>
+        </h3>
+        {MydataProduct?.attributes?.image?.data.length > 1 ? (
+          <div className="ProductDetailsImg">
+            <img
+              className="ProductDetailsImgBorder"
+              src={MydataProduct.attributes?.image.data[0].attributes.url}
+              alt=""
+            ></img>
+
+            {mapImg}
+          </div>
+        ) : (
+          ""
+        )}
         <div className="ProductDetailsImgPremier">
-          <img src={img4} alt=""></img>
+          <img
+            ref={PremierImg}
+            src={MydataProduct.attributes?.image.data[0].attributes.url}
+            alt=""
+          ></img>
         </div>
         <div className="ProductDetailsAction">
-          <h1>Playwood arm chair </h1>
+          <h1>
+            {" "}
+            {MydataProduct.attributes?.name}
+            <div className="priceDiv">
+              {MydataProduct.attributes?.offerprice ? (
+                <span className="offerPrice">
+                  {MydataProduct.attributes?.offerprice}$
+                </span>
+              ) : (
+                ""
+              )}
+              <span
+                className={
+                  MydataProduct.attributes?.offerprice ? "price" : "offerPrice"
+                }
+              >
+                {MydataProduct.attributes?.price}$
+              </span>
+            </div>{" "}
+          </h1>
 
           <div className="ProductDetails-Rating">
             <span className="product-Rating">{<Star number={5} />}</span>
@@ -72,7 +166,15 @@ function ProductDetails() {
           </div>
 
           <div className="ProductDetails-Categories">
-            Categories: <span>Furniture</span>
+            Categories:{" "}
+            <span>
+              {" "}
+              <Link
+                to={`/categoty/${MydataProduct.attributes?.categoties?.data[0].id}`}
+              >
+                {MydataProduct.attributes?.categoties?.data[0].attributes.title}
+              </Link>{" "}
+            </span>
           </div>
 
           <div className="ProductDetails-Quantity">
@@ -202,7 +304,7 @@ function ProductDetails() {
       {/* ProductDetailsInstTow */}
       <div className="ProductDetailsInstTowTop">
         <div className="container ProductDetailsInstTow">
-          <ProductDetailsTabs />
+          <ProductDetailsTabs Mydata={MydataProduct} />
         </div>
       </div>
       {/* ==ProductDetailsInstTow== */}
@@ -211,7 +313,10 @@ function ProductDetails() {
         <div className="container">
           <h3>Related Products</h3>
         </div>
-        <ProductGroupScroallLeft data={Mydata} doneLoading={loading} />
+        <ProductGroupScroallLeft
+          data={MydataCategoties}
+          doneLoading={loadingCategoties}
+        />
       </div>
     </>
   );

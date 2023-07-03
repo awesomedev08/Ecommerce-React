@@ -20,7 +20,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component="div">{children}</Typography>
         </Box>
       )}
     </div>
@@ -40,12 +40,20 @@ function a11yProps(index) {
   };
 }
 
-function ProductDetailsTabs() {
+function ProductDetailsTabs({ Mydata }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [MydataProduct, setMyDataProduct] = React.useState([]);
+
+  React.useEffect(() => {
+    setMyDataProduct(Mydata);
+  }, [Mydata]);
+
+  //console.log(MydataProduct.attributes);
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -54,11 +62,13 @@ function ProductDetailsTabs() {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          component="div"
         >
           <Tab
             className="ProductDetailsTabs-Title"
             label="Description"
             {...a11yProps(0)}
+            component="div"
           />
           <Tab
             className="ProductDetailsTabs-Title"
@@ -77,28 +87,47 @@ function ProductDetailsTabs() {
           />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>
-        <h3>Varius tempor.</h3>
-        <p>
-          {" "}
-          Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor
-          ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris
-          varius ac est bibendum. Scelerisque a, risus ac ante. Velit
-          consectetur neque, elit, aliquet. Non varius proin sed urna, egestas
-          consequat laoreet diam tincidunt. Magna eget faucibus cras justo,
-          tortor sed donec tempus. Imperdiet consequat, quis diam arcu, nulla
-          lobortis justo netus dis. Eu in fringilla vulputate nunc nec. Dui,
-          massa viverr .
-        </p>
+      <TabPanel value={value} index={0} component="div">
+        <div>
+          <h3>{MydataProduct.attributes?.name}</h3>
+          <p>{MydataProduct.attributes?.desc}</p>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Additional Info
+        <div>
+          Additional Info:
+          <p>
+            Color:
+            {MydataProduct?.attributes?.Color}
+          </p>
+          <p>
+            brands:
+            {MydataProduct?.attributes?.brands.data[0]?.attributes?.Brand}
+          </p>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Reviews
       </TabPanel>
-      <TabPanel value={value} index={3}>
-        Video
+      <TabPanel className="ProductDetailsTabs-Video" value={value} index={3}>
+        <div>
+          Video
+          {MydataProduct.attributes?.Video ? (
+            <iframe
+              width={window.addEventListener("resize", () => {
+                return window.screen.availWidth - 48;
+              })}
+              height="315"
+              src={MydataProduct.attributes?.Video}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            ""
+          )}
+        </div>
       </TabPanel>
     </Box>
   );

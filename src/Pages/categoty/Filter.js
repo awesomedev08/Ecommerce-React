@@ -76,7 +76,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                   }
                 }}
                 icon={<img src={CheckedboxIcon} alt="" />}
-                checkedIcon={<CheckboxIcon />}
+                checkedicon={<CheckboxIcon />}
                 inputProps={{ "aria-label": "Checkbox" }}
               />
             }
@@ -102,7 +102,6 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
   const handleInputToggle = () => {
     inputRef.current.focus();
   };
-
 
   handleUseFilter = function (set) {
     setParamsToUrl(" ");
@@ -184,7 +183,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<CheckboxIcon />}
+              checkedicon={<CheckboxIcon />}
             />
           }
           label="20% Cashback"
@@ -216,12 +215,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<CheckboxIcon />}
+              checkedicon={<CheckboxIcon />}
             />
           }
           label="5% Cashback Offer"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedIcon={<CheckboxIcon />}
+          checkedicon={<CheckboxIcon />}
         />
         <FormControlLabel
           control={
@@ -250,12 +249,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<CheckboxIcon />}
+              checkedicon={<CheckboxIcon />}
             />
           }
           label="25% Discount Offer"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedIcon={<CheckboxIcon />}
+          checkedicon={<CheckboxIcon />}
         />
       </FormGroup>
 
@@ -266,7 +265,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
             <Checkbox
               checked={checked.checked4}
               icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-              checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+              checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked4: e.target.checked }));
               }}
@@ -294,7 +293,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 setChecked((v) => ({ ...v, checked5: e.target.checked }));
               }}
               icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-              checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+              checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
             />
           }
           label={
@@ -312,7 +311,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
             </div>
           }
           icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-          checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+          checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
         />
         <FormControlLabel
           control={
@@ -322,7 +321,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 setChecked((v) => ({ ...v, checked6: e.target.checked }));
               }}
               icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-              checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+              checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
             />
           }
           label={
@@ -340,7 +339,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
             </div>
           }
           icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-          checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+          checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
         />
       </FormGroup>
 
@@ -364,7 +363,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<CheckboxIcon />}
+              checkedicon={<CheckboxIcon />}
             />
           }
           label="$0.00 - $150.00"
@@ -388,12 +387,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<CheckboxIcon />}
+              checkedicon={<CheckboxIcon />}
             />
           }
           label="$150.00 - $350.00"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedIcon={<CheckboxIcon />}
+          checkedicon={<CheckboxIcon />}
         />
         <FormControlLabel
           control={
@@ -414,12 +413,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<CheckboxIcon />}
+              checkedicon={<CheckboxIcon />}
             />
           }
           label="$150.00 - $504.00"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedIcon={<CheckboxIcon />}
+          checkedicon={<CheckboxIcon />}
         />
 
         <FormControlLabel
@@ -439,12 +438,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<CheckboxIcon />}
+              checkedicon={<CheckboxIcon />}
             />
           }
           label="$450.00 +"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedIcon={<CheckboxIcon />}
+          checkedicon={<CheckboxIcon />}
         />
       </FormGroup>
 
@@ -515,7 +514,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxBlue"> </span>}
-                  checkedIcon={<span className="CheckedboxBlue"> </span>}
+                  checkedicon={<span className="CheckedboxBlue"> </span>}
                 />
               }
               label="Blue"
@@ -545,12 +544,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxOrange"></span>}
-                  checkedIcon={<span className="CheckedboxOrange"></span>}
+                  checkedicon={<span className="CheckedboxOrange"></span>}
                 />
               }
               label="Orange"
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedIcon={<img src={CheckboxIcon} alt="" />}
+              checkedicon={<img src={CheckboxIcon} alt="" />}
             />
             <FormControlLabel
               control={
@@ -577,7 +576,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxBrown"></span>}
-                  checkedIcon={<span className="CheckedboxBrown"></span>}
+                  checkedicon={<span className="CheckedboxBrown"></span>}
                 />
               }
               label="Brown"
@@ -607,7 +606,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxGreen"></span>}
-                  checkedIcon={<span className="CheckedboxGreen"></span>}
+                  checkedicon={<span className="CheckedboxGreen"></span>}
                 />
               }
               label="Green"
@@ -637,7 +636,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxPurple"></span>}
-                  checkedIcon={<span className="CheckedboxPurple"></span>}
+                  checkedicon={<span className="CheckedboxPurple"></span>}
                 />
               }
               label="Purple"
@@ -667,7 +666,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxSky"></span>}
-                  checkedIcon={<span className="CheckedboxSky"></span>}
+                  checkedicon={<span className="CheckedboxSky"></span>}
                 />
               }
               label="Sky"
