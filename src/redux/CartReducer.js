@@ -1,3 +1,4 @@
+import { Numbers } from "@mui/icons-material";
 import { createSlice } from "@reduxjs/toolkit";
 
 export const CartReducer = createSlice({
@@ -10,9 +11,9 @@ export const CartReducer = createSlice({
       const item = state.products.find(
         (product) => product.id === action.payload.id
       );
-     // console.log(item);
+      // console.log(item);
       if (item) {
-        item.quantity += action.payload.quantity;
+        item.Quantity += parseFloat(action.payload.Quantity);
       } else {
         //console.log(action.payload);
         state.products.push(action.payload);
@@ -26,10 +27,34 @@ export const CartReducer = createSlice({
     },
     restCart: (state) => {
       state.products = [];
-    }
+    },
+    minusQuantity: (state, action) => {
+      const item = state.products.find(
+        (product) => product.id === action.payload.id
+      );
+      // console.log(item);
+      if (item) {
+        item.Quantity -= parseFloat(action.payload.Quantity);
+      }
+    },
+    replaceQuantity: (state, action) => {
+      const item = state.products.find(
+        (product) => product.id === action.payload.id
+      );
+      // console.log(item);
+      if (item) {
+        item.Quantity = parseFloat(action.payload.Quantity);
+      }
+    },
   },
 });
 
-export const { addToCart, removeItem, restCart } = CartReducer.actions;
+export const {
+  addToCart,
+  removeItem,
+  restCart,
+  minusQuantity,
+  replaceQuantity,
+} = CartReducer.actions;
 
 export default CartReducer.reducer;

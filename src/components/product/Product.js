@@ -108,18 +108,18 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
         to={addToCartH.href}
         className="AddToCart"
         onClick={(element) => {
-          dispatch(
-            addToCart({
-              id: id,
-              name: name,
-              desc: desc,
-              img: img,
-              price: price,
-              offerprice: offerprice,
-              quantity: 1,
-            })
-          );
-
+          if (addToCartH.text !== "Go to Cart") {
+            dispatch(
+              addToCart({
+                id: id,
+                name: name,
+                dec: desc,
+                img: img,
+                price: price || offerprice,
+                Quantity: 1,
+              })
+            );
+          }
           checkAddToCart();
         }}
       >

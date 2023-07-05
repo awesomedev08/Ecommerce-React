@@ -106,12 +106,16 @@ function ProductDetailsTabs({ Mydata }) {
           </p>
         </div>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Reviews
+      <TabPanel value={value} index={2}> <p>
+
+        Reviews </p>
       </TabPanel>
       <TabPanel className="ProductDetailsTabs-Video" value={value} index={3}>
         <div>
+          <p>
+
           Video
+          </p>
           {MydataProduct.attributes?.Video ? (
             <iframe
               width={window.addEventListener("resize", () => {

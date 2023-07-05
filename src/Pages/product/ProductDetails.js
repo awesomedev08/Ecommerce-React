@@ -22,8 +22,11 @@ import ProductDetailsTabs from "./tabs/ProductDetailsTabs";
 import ProductGroup from "../../components/productGroup/ProductGroup";
 import axios from "axios";
 import ProductGroupScroallLeft from "../../components/productGroupScroallLeft/ProductGroupScroallLeft";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/CartReducer";
 
 function ProductDetails({ Mydata }) {
+  const dispatch = useDispatch();
   const params = useParams();
   const [MydataCategoties, setMyDataCategoties] = useState([]);
   const [loadingCategoties, setloadingCategoties] = useState(false);
@@ -87,11 +90,7 @@ function ProductDetails({ Mydata }) {
   // console.log(mapImgFilter);
 
   let mapImg = mapImgFilter?.map((img) => {
-    return (
-     
-        <img key={img.id} src={img.attributes.url} alt=""></img>
-     
-    );
+    return <img key={img.id} src={img.attributes.url} alt=""></img>;
   });
   //  ==mapImg==
 
@@ -195,7 +194,10 @@ function ProductDetails({ Mydata }) {
               ></img>
             </span>
             <input
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={(event) => {
+                //
+                setQuantity(parseFloat(event.target.value));
+              }}
               type="number"
               placeholder="1"
               value={Quantity}
@@ -263,7 +265,7 @@ function ProductDetails({ Mydata }) {
                 ></img>
               </span>
               <input
-                onChange={(e) => setQuantity(e.target.value)}
+                onChange={(e) => setQuantity(parseFloat(e.target.value))}
                 type="number"
                 placeholder="1"
                 value={Quantity}
@@ -271,6 +273,7 @@ function ProductDetails({ Mydata }) {
               <span
                 className="ProductDetails-Quantity-decreased-mobile"
                 onClick={(event) => {
+                  
                   setQuantity((unm) => (unm += 1));
                   console.log(Quantity);
                 }}
@@ -296,7 +299,25 @@ function ProductDetails({ Mydata }) {
           </div>
 
           <div className="ProductDetails-Add">
-            <button className="ProductDetails-AddCart">Add To cart</button>
+            <button
+              className="ProductDetails-AddCart"
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    id: MydataProduct.id,
+                    name: MydataProduct.attributes.name,
+                    dec: MydataProduct.attributes.desc,
+                    img: MydataProduct.attributes?.image.data[0].attributes.url,
+                    price:
+                      MydataProduct.attributes?.offerprice ||
+                      MydataProduct.attributes?.price,
+                    Quantity,
+                  })
+                )
+              }
+            >
+              Add To cart
+            </button>
             <button className="ProductDetails-AddWish">Add To wish</button>
           </div>
         </div>
