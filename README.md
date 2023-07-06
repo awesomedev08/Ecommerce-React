@@ -46,6 +46,13 @@ w NB# History of updates
 
 ## 5/7/2023 Product > work in Cart and payment methods
 
+## 5/8/2023 \*
+
+- use alert
+  enqueueSnackbar("New account registration succeeded", {
+  variant: "success",
+  });
+
 # /_ responsive _/
 
 - max-width: 992px

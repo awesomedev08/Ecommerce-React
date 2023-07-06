@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Header from "./Pages/Header/Header";
 import SignUp from "./Pages/Sign/Sign Up/SignUp";
@@ -11,17 +11,22 @@ import Cart from "./Pages/Cart/Cart";
 import CategotyPage from "./Pages/categoty/CategotyPage";
 import Pagecustom from "./Pages/pagecustom/Pagecustom";
 import Product from "./Pages/product/Product";
+import Success from "./Pages/success/Success";
+import Dashboard from "./Pages/dashboard/Dashboard";
 
+// /success?success=false
 function App() {
   return (
     <div className="App ">
       <Header />
       <MenuSecond />
       <Routes>
+        <Route path="/success/:success" element={<Success />} />
         <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:itemId" element={<Product />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="Categoty/:categotyId" element={<CategotyPage />}></Route>
         <Route
           path="Categoty/:categotyId/:filter"

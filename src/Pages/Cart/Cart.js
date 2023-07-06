@@ -12,16 +12,18 @@ import {
   minusQuantity,
   removeItem,
   replaceQuantity,
+  restCart,
 } from "../../redux/CartReducer";
 
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { enqueueSnackbar } from "notistack";
 
 function Cart() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
+  const UserInfo = useSelector((state) => state.user.User);
   // const products = useSelector(state => state.cart.products);
-
   let [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -44,12 +46,20 @@ function Cart() {
 
   const handlePayment = async () => {
     try {
+      enqueueSnackbar(
+        "Please wait, you will be redirected to the payment page to complete your purchase upon checkout.",
+        {
+          variant: "success",
+        }
+      );
       const stripe = await stripePromise;
 
       const res = await axios.post(
         "http://localhost:1337/api/orders",
         {
           products,
+          email: UserInfo.user.email,
+          userId: UserInfo.user.id,
         },
         {
           headers: {
@@ -61,6 +71,12 @@ function Cart() {
         sessionId: res.data.stripeSession.id,
       });
     } catch (err) {
+      enqueueSnackbar(
+        "An error has occurred. Please contact us for assistance.",
+        {
+          variant: "error",
+        }
+      );
       console.log(err);
     }
   };
@@ -164,6 +180,10 @@ function Cart() {
                             id: e.id,
                           })
                         );
+
+                        enqueueSnackbar(`Item removed from cart.`, {
+                          variant: "success",
+                        });
                       }}
                     >
                       <DeleteOutlineIcon className="DeleteOutlineIcon" />
@@ -172,7 +192,16 @@ function Cart() {
                 </div>
               </div>
             ))}{" "}
-            <div className="reset-cart-mobile">
+            <div
+              className="reset-cart-mobile"
+              onClick={() => {
+                dispatch(restCart());
+
+                enqueueSnackbar(`Cart reset.`, {
+                  variant: "success",
+                });
+              }}
+            >
               <DeleteForeverOutlinedIcon /> Reset Cart
             </div>
           </div>
@@ -189,7 +218,15 @@ function Cart() {
             </button>
           </div>
         </div>
-        <div className="reset-cart">
+        <div
+          className="reset-cart"
+          onClick={() => {
+            dispatch(restCart());
+            enqueueSnackbar(`Cart reset.`, {
+              variant: "success",
+            });
+          }}
+        >
           {" "}
           <DeleteForeverOutlinedIcon /> Reset Cart
         </div>

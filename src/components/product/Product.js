@@ -5,6 +5,7 @@ import img1 from "../../assets/Rectangle.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/CartReducer";
+import { enqueueSnackbar } from "notistack";
 function Product({ price, offerprice, Rating, id, img, name, desc }) {
   //console.log(name.substring(0,30));
   const dispatch = useDispatch();
@@ -121,6 +122,10 @@ function Product({ price, offerprice, Rating, id, img, name, desc }) {
             );
           }
           checkAddToCart();
+
+          enqueueSnackbar(`Product added to cart. 1 items.`, {
+            variant: "success",
+          });
         }}
       >
         {addToCartH.text}

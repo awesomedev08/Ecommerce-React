@@ -15,7 +15,6 @@ import France from "../../../assets/icon/France.svg";
 // form ==
 
 import { Link } from "react-router-dom";
-import UserLocal from "../../../hooks/UserLocal";
 import { useSelector } from "react-redux";
 
 import { Badge } from "@mui/material";
@@ -23,6 +22,8 @@ import { styled } from "@mui/material/styles";
 
 function HeaderThree({ Mylanguage, handleChangeMylanguage }) {
   const productsCount = useSelector((state) => state.cart.products.length);
+  const UserInfo = useSelector((state) => state.user.User);
+
   return (
     <>
       <div className="languageDivTop">
@@ -57,9 +58,9 @@ function HeaderThree({ Mylanguage, handleChangeMylanguage }) {
       </div>
 
       <div className="SignUp-SignIn">
-        <Link to={UserLocal() === null ? "/SignUp" : "/dashboard"}>
+        <Link to={UserInfo.jwt ? "/dashboard" : "/SignUp"}>
           <img src={user} alt="user"></img>
-          <span>Sign Up/Sign In</span>
+          <span>{UserInfo.jwt ? "Dashboard" : "Sign Up/Sign In"} </span>
         </Link>
       </div>
       <div className="CallNumber">
@@ -67,7 +68,7 @@ function HeaderThree({ Mylanguage, handleChangeMylanguage }) {
         <span>+124563552</span>
       </div>
       <div className="HeaderThree-Cart">
-        <Link to={UserLocal() === null ? "/SignUp" : "/Cart"}>
+        <Link to={UserInfo.jwt ? "/Cart" : "/SignUp"}>
           <div className="productsCount-div">
             <img src={Buy} alt="Buy"></img>
             <span className="productsCount">{productsCount}</span>

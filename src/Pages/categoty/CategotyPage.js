@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState, useCallback } from "react";
 
 import style from "./Categoty.css";
 import { useParams } from "react-router-dom";
@@ -21,6 +21,18 @@ import COMPLoading from "../../components/loading/COMPLoading";
 import Filter from "./Filter";
 
 // PriceFilter-Search-Vector==
+// CategotyPage-product-filter-Mobile
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+// ==CategotyPage-product-filter-Mobile==
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -60,7 +72,12 @@ export default function CategotyPage() {
   };
 
   // SearchParams("brands", "delete" , "filters[brands][id][$eq]", src.id)
-  const SearchParams = function SearchParams(name, action, params, value) {
+  const SearchParams = useCallback(function SearchParams(
+    name,
+    action,
+    params,
+    value
+  ) {
     if (name === "brands") {
       if (action === "append") {
         //   console.log("append");
@@ -131,7 +148,8 @@ export default function CategotyPage() {
         });
       }
     }
-  };
+  },
+  []);
 
   useEffect(() => {
     //  console.log(ParamsapiFilters);
@@ -197,6 +215,15 @@ export default function CategotyPage() {
     );
   });
 
+  // handleUseFilter
+  const [useFilter, SetUseFilter] = useState(false);
+
+  // ==handleUseFilter==
+  // CategotyPage-product-filter-Mobile
+
+  const filterMobile = useRef();
+  //  ==CategotyPage-product-filter-Mobile==
+
   return (
     <>
       <div className="CategotyPage-top">
@@ -204,12 +231,119 @@ export default function CategotyPage() {
         <div className="Categoty-Category">
           <Category />
         </div>
-        <div className="CategotyPage-product-filter-Mobile"></div>
+        {/* CategotyPage-product-filter-Mobile */}
+        <div className="CategotyPage-product-filter-Mobile">
+          <div>
+            <div className="CategotyPage-product-filter-Mobile-btn">
+              <button
+                className="filter-Mobile-filterby"
+                onClick={() => {
+                 
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.remove("animationOutLeft");
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.toggle("displayFlex");
+                  document
+                    .querySelector("body")
+                    .classList.add("overflowHidden");
+                }}
+              >
+                filter by
+              </button>
+              <button
+                className="filter-Mobile-btn-style"
+                onClick={() => {
+                
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.remove("animationOutLeft");
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.toggle("displayFlex");
+                  document
+                    .querySelector("body")
+                    .classList.add("overflowHidden");
+                }}
+              >
+                Product Brand
+              </button>
+              <button
+                className="filter-Mobile-btn-style"
+                onClick={() => {
+              
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.remove("animationOutLeft");
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.toggle("displayFlex");
+                  document
+                    .querySelector("body")
+                    .classList.add("overflowHidden");
+                }}
+              >
+                Rating Item
+              </button>
+              <button
+                className="filter-Mobile-btn-style"
+                onClick={(e) => {
+                  
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.remove("animationOutLeft");
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.toggle("displayFlex");
+                  document
+                    .querySelector("body")
+                    .classList.add("overflowHidden");
+                }}
+              >
+                Product Brand
+              </button>
+            </div>
+
+            <Box
+              role="presentation"
+              onClick={(e) => {
+                let target = e.target.classList.contains(
+                  "CategotyPage-product-filter-Mobile-Drawer"
+                );
+                if (target) {
+                  document
+                    .querySelector("body")
+                    .classList.remove("overflowHidden");
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.toggle("displayFlex");
+                  document
+                    .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+                    .classList.toggle("animationOutLeft");
+                }
+              }}
+              onKeyDown={() => {}}
+              className="CategotyPage-product-filter-Mobile-Drawer"
+            >
+              <Filter
+                Mydata={Mydata}
+                SearchParams={SearchParams}
+                setParamsToUrl={setParamsToUrl}
+                useFilter={useFilter}
+                SetUseFilter={SetUseFilter}
+              />
+            </Box>
+          </div>
+        </div>
+        {/* ==CategotyPage-product-filter-Mobile== */}
         <div className="CategotyPage container">
           <Filter
             Mydata={Mydata}
             SearchParams={SearchParams}
             setParamsToUrl={setParamsToUrl}
+            useFilter={useFilter}
+            SetUseFilter={SetUseFilter}
           />
           <div className="CategotyPage-product">
             <Box sx={{ flexGrow: 1 }}>

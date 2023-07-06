@@ -9,7 +9,7 @@ import CheckboxIcon from "../../components/Icon/CheckboxIcon";
 import CheckedboxIcon from "../../assets/icon/uil_check-un.svg";
 import CheckboxIconStormyStraitGreen from "../../assets/icon/uil_check-StormyStraitGreen.svg";
 import CheckedboxIconStormyStraitGreen from "../../assets/icon/uil_check-un-StormyStraitGreen.svg";
-
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Checkbox,
   FormControlLabel,
@@ -21,17 +21,20 @@ import {
 // PriceFilter-Search-Vector
 import PriceFilterSearchVector from "../../assets/icon/PriceFilter-Search-Vector.svg";
 import { FParamsFilters } from "./CategotyPage";
+import { memo } from "react";
 let handleUseFilter;
-function Filter({ Mydata, SearchParams, setParamsToUrl }) {
+
+function Filter({
+  Mydata,
+  SearchParams,
+  setParamsToUrl,
+  useFilter,
+  SetUseFilter,
+}) {
   // Product Brand
-  // handleUseFilter
-
-  const [useFilter, SetUseFilter] = useState(false);
-
-  // ==handleUseFilter==
 
   const [dataBrand, SetDataBrand] = useState([]);
-
+  let productsBrandsMAPAsync = [];
   useEffect(() => {
     const ws = [];
     let productsBrandsFilter = Mydata?.filter((product) => {
@@ -76,7 +79,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                   }
                 }}
                 icon={<img src={CheckedboxIcon} alt="" />}
-                checkedicon={<CheckboxIcon />}
+                checkedIcon={<CheckboxIcon />}
                 inputProps={{ "aria-label": "Checkbox" }}
               />
             }
@@ -85,11 +88,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
         </div>
       );
     });
-    //console.log(productsBrandsFilter);
+
+
     if (!useFilter) {
       SetDataBrand(productsBrandsMAP);
     }
-  }, [Mydata]);
+  }, [Mydata, useFilter]);
 
   // ==Product Brand==
 
@@ -107,7 +111,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
     setParamsToUrl(" ");
     SetUseFilter(set);
     FParamsFilters();
-    console.log("handleUseFilter");
+    
     setChecked({
       checked1: false,
       checked2: false,
@@ -151,9 +155,23 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
   // ==PriceFilter-Search==
   return (
     <div className="CategotyPage-product-filter">
+      <span
+        className="filter-Mobile-Drawer-CloseIcon"
+        onClick={() => {
+          document.querySelector("body").classList.remove("overflowHidden");
+          document
+            .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+            .classList.toggle("displayFlex");
+          document
+            .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
+            .classList.toggle("animationOutLeft");
+        }}
+      >
+        <CloseIcon />
+      </span>
+   
       <span className="Product-filter-titel">Product Brand</span>
       <FormGroup>{dataBrand}</FormGroup>
-
       <span className="Product-filter-titel">Discount Offer</span>
       <FormGroup>
         <FormControlLabel
@@ -162,9 +180,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
               checked={checked.checked1}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked1: e.target.checked }));
-                console.log("===");
-                console.log("20% Cashback");
-                //  console.log(e.target.checked);
+            
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams(
@@ -183,7 +199,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedicon={<CheckboxIcon />}
+              checkedIcon={<CheckboxIcon />}
             />
           }
           label="20% Cashback"
@@ -194,9 +210,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
               checked={checked.checked2}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked2: e.target.checked }));
-                console.log("===");
-                console.log("5% Cashback Offer");
-                console.log(e.target.checked);
+             
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams(
@@ -215,12 +229,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedicon={<CheckboxIcon />}
+              checkedIcon={<CheckboxIcon />}
             />
           }
           label="5% Cashback Offer"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedicon={<CheckboxIcon />}
+          checkedIcon={<CheckboxIcon />}
         />
         <FormControlLabel
           control={
@@ -228,9 +242,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
               checked={checked.checked3}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked3: e.target.checked }));
-                console.log("===");
-                console.log("25% Discount Offer");
-                console.log(e.target.checked);
+            
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams(
@@ -249,15 +261,14 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedicon={<CheckboxIcon />}
+              checkedIcon={<CheckboxIcon />}
             />
           }
           label="25% Discount Offer"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedicon={<CheckboxIcon />}
+          checkedIcon={<CheckboxIcon />}
         />
       </FormGroup>
-
       <span className="Product-filter-titel">Rating Item</span>
       <FormGroup>
         <FormControlLabel
@@ -265,7 +276,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
             <Checkbox
               checked={checked.checked4}
               icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-              checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+              checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked4: e.target.checked }));
               }}
@@ -293,7 +304,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 setChecked((v) => ({ ...v, checked5: e.target.checked }));
               }}
               icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-              checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+              checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
             />
           }
           label={
@@ -311,7 +322,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
             </div>
           }
           icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-          checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+          checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
         />
         <FormControlLabel
           control={
@@ -321,7 +332,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 setChecked((v) => ({ ...v, checked6: e.target.checked }));
               }}
               icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-              checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+              checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
             />
           }
           label={
@@ -339,10 +350,9 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
             </div>
           }
           icon={<img src={CheckboxIconStormyStraitGreen} alt="" />}
-          checkedicon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
+          checkedIcon={<img src={CheckedboxIconStormyStraitGreen} alt="" />}
         />
       </FormGroup>
-
       <span className="Product-filter-titel">Price Filter</span>
       <FormGroup>
         <FormControlLabel
@@ -351,9 +361,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
               checked={checked.checked7}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked7: e.target.checked }));
-                console.log("===");
-                console.log("$0.00 - $150.00");
-                console.log(e.target.checked);
+             
 
                 SetUseFilter(true);
                 if (e.target.checked) {
@@ -363,7 +371,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedicon={<CheckboxIcon />}
+              checkedIcon={<CheckboxIcon />}
             />
           }
           label="$0.00 - $150.00"
@@ -374,9 +382,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
               checked={checked.checked8}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked8: e.target.checked }));
-                console.log("===");
-                console.log("$150.00 - $350.00");
-                console.log(e.target.checked);
+             
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams("price", "append", "filters[price][$gte]", 150);
@@ -387,12 +393,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedicon={<CheckboxIcon />}
+              checkedIcon={<CheckboxIcon />}
             />
           }
           label="$150.00 - $350.00"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedicon={<CheckboxIcon />}
+          checkedIcon={<CheckboxIcon />}
         />
         <FormControlLabel
           control={
@@ -400,9 +406,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
               checked={checked.checked9}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked9: e.target.checked }));
-                console.log("===");
-                console.log("$150.00 - $504.00");
-                console.log(e.target.checked);
+               
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams("price", "append", "filters[price][$gte]", 150);
@@ -413,12 +417,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedicon={<CheckboxIcon />}
+              checkedIcon={<CheckboxIcon />}
             />
           }
           label="$150.00 - $504.00"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedicon={<CheckboxIcon />}
+          checkedIcon={<CheckboxIcon />}
         />
 
         <FormControlLabel
@@ -427,9 +431,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
               checked={checked.checked10}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked10: e.target.checked }));
-                console.log("===");
-                console.log("$450.00 +");
-                console.log(e.target.checked);
+           
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams("price", "append", "filters[price][$gte]", 450);
@@ -438,15 +440,14 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                 }
               }}
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedicon={<CheckboxIcon />}
+              checkedIcon={<CheckboxIcon />}
             />
           }
           label="$450.00 +"
           icon={<img src={CheckedboxIcon} alt="" />}
-          checkedicon={<CheckboxIcon />}
+          checkedIcon={<CheckboxIcon />}
         />
       </FormGroup>
-
       <div className="PriceFilter-Search">
         <InputBase
           value={checked.checked11}
@@ -467,7 +468,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
             });
           }}
           onFocus={(e) => {
-            console.log(checked.checked11);
+           
             SearchParams(
               "price-search",
               "delete",
@@ -483,7 +484,6 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
           </IconButton>
         </div>
       </div>
-
       <div className="Product-filter-Color">
         <span className="Product-filter-titel ">Filter By Color</span>
         <div>
@@ -494,8 +494,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                   checked={checked.checked12}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked12: e.target.checked }));
-                    console.log("Blue");
-                    console.log(e.target.style.fontWeight);
+                   
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -514,7 +513,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxBlue"> </span>}
-                  checkedicon={<span className="CheckedboxBlue"> </span>}
+                  checkedIcon={<span className="CheckedboxBlue"> </span>}
                 />
               }
               label="Blue"
@@ -525,7 +524,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                   checked={checked.checked13}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked13: e.target.checked }));
-                    console.log("Orange");
+                  
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -544,12 +543,12 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxOrange"></span>}
-                  checkedicon={<span className="CheckedboxOrange"></span>}
+                  checkedIcon={<span className="CheckedboxOrange"></span>}
                 />
               }
               label="Orange"
               icon={<img src={CheckedboxIcon} alt="" />}
-              checkedicon={<img src={CheckboxIcon} alt="" />}
+              checkedIcon={<img src={CheckboxIcon} alt="" />}
             />
             <FormControlLabel
               control={
@@ -557,7 +556,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                   checked={checked.checked14}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked14: e.target.checked }));
-                    console.log("Brown");
+                   
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -576,7 +575,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxBrown"></span>}
-                  checkedicon={<span className="CheckedboxBrown"></span>}
+                  checkedIcon={<span className="CheckedboxBrown"></span>}
                 />
               }
               label="Brown"
@@ -587,7 +586,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                   checked={checked.checked15}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked15: e.target.checked }));
-                    console.log("Green");
+                   
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -606,7 +605,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxGreen"></span>}
-                  checkedicon={<span className="CheckedboxGreen"></span>}
+                  checkedIcon={<span className="CheckedboxGreen"></span>}
                 />
               }
               label="Green"
@@ -617,7 +616,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                   checked={checked.checked16}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked16: e.target.checked }));
-                    console.log("Purple");
+                 
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -636,7 +635,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxPurple"></span>}
-                  checkedicon={<span className="CheckedboxPurple"></span>}
+                  checkedIcon={<span className="CheckedboxPurple"></span>}
                 />
               }
               label="Purple"
@@ -647,7 +646,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                   checked={checked.checked17}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked17: e.target.checked }));
-                    console.log("Sky");
+                   
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -666,7 +665,7 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
                     }
                   }}
                   icon={<span className="CheckboxSky"></span>}
-                  checkedicon={<span className="CheckedboxSky"></span>}
+                  checkedIcon={<span className="CheckedboxSky"></span>}
                 />
               }
               label="Sky"
@@ -678,5 +677,5 @@ function Filter({ Mydata, SearchParams, setParamsToUrl }) {
   );
 }
 
-export default Filter;
+export default memo(Filter);
 export { handleUseFilter };

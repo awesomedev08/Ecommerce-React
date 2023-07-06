@@ -1,0 +1,16 @@
+.Success-true {
+  background-color: #43a047;
+  height: 100px;
+  color: white;
+  font-family: Cairo;
+  font-weight: 700;
+  padding-top: 45px;
+}
+.Success-false {
+  background-color: "#D32F2F";
+  height: 100px;
+  color: white;
+  font-family: Cairo;
+  font-weight: 700;
+  padding-top: 45px;
+}

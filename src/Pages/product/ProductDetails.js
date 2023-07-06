@@ -24,6 +24,7 @@ import axios from "axios";
 import ProductGroupScroallLeft from "../../components/productGroupScroallLeft/ProductGroupScroallLeft";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/CartReducer";
+import { enqueueSnackbar } from "notistack";
 
 function ProductDetails({ Mydata }) {
   const dispatch = useDispatch();
@@ -273,7 +274,6 @@ function ProductDetails({ Mydata }) {
               <span
                 className="ProductDetails-Quantity-decreased-mobile"
                 onClick={(event) => {
-                  
                   setQuantity((unm) => (unm += 1));
                   console.log(Quantity);
                 }}
@@ -301,7 +301,7 @@ function ProductDetails({ Mydata }) {
           <div className="ProductDetails-Add">
             <button
               className="ProductDetails-AddCart"
-              onClick={() =>
+              onClick={() => {
                 dispatch(
                   addToCart({
                     id: MydataProduct.id,
@@ -313,8 +313,12 @@ function ProductDetails({ Mydata }) {
                       MydataProduct.attributes?.price,
                     Quantity,
                   })
-                )
-              }
+                );
+
+                enqueueSnackbar(`Product added to cart. ${Quantity} items.`, {
+                  variant: "success",
+                });
+              }}
             >
               Add To cart
             </button>

@@ -20,6 +20,8 @@ import styles from "./SignUp.css";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import axios from "axios";
 import { enqueueSnackbar } from "notistack";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../../redux/UserReducer";
 
 const baseUrl = "http://localhost:1337/api/auth/local/register";
 
@@ -30,6 +32,8 @@ const defaultTheme = createTheme({
 });
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -52,7 +56,9 @@ export default function SignUp() {
     axios
       .post(baseUrl, data)
       .then((response) => {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        console.log(response.data);
+        dispatch(addUser(response.data));
+        //  localStorage.setItem("user", JSON.stringify(response.data));
         enqueueSnackbar("New account registration succeeded", {
           variant: "success",
         });
@@ -62,9 +68,8 @@ export default function SignUp() {
         }, 1000);
       })
       .catch((error) => {
-        // console.log(error.response.data.error.details.errors);
-
-        let errorMessage = error.response.data.error.details.errors;
+        console.log(error);
+        let errorMessage = error.response?.data.error.details.errors;
         errorMessage.forEach(async (error) => {
           console.log(error);
           // console.log(error.path[0]);

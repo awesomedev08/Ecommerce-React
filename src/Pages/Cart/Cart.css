@@ -327,8 +327,8 @@
     justify-content: space-around;
   }
   .cart-product-h4-p {
-    flex-basis: 100%;
-    max-width: 100%;
+    flex-basis: 94%;
+    max-width: 90%;
   }
   .ProductDetails-Quantity-price-Delete {
     flex-basis: 100%;
