@@ -1,0 +1,15 @@
+.Search {
+  margin-top: 20px;
+}
+.SearchText {
+  color: #0a4b65;
+  text-align: center;
+  font-family: Cairo;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px;
+}
+.SearchText span {
+    color: #0D988C;
+}

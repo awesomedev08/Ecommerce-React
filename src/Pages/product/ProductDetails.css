@@ -226,6 +226,7 @@
   background: #f0f5f9;
   min-height: 300px;
   transition: ease-in-out 400ms;
+  padding-bottom: 16px;
 }
 .ProductDetails-RelatedProducts h3 {
   color: #101750;
@@ -250,8 +251,6 @@
 .ProductDetails-title-mobile,
 .ProductDetails-Quantity-mobile {
   display: none;
-
- 
 }
 .ProductDetails-Quantity-mobile input {
   width: 35px;

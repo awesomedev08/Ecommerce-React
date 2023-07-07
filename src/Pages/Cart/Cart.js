@@ -38,6 +38,10 @@ function Cart() {
         }, 0)
       );
     }
+
+    if (!UserInfo.jwt) {
+      window.location.pathname = "/SignUp";
+    }
   }, [products]);
 
   const stripePromise = loadStripe(

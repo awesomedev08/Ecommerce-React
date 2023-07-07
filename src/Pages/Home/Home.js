@@ -27,7 +27,7 @@ function Home() {
     <div className="Home">
       <div className="welcomePhoto">
         <ImageLoding image={HomeDate} Class="welcomePhotoImage" />
-        <Link className="welcomePhotoBtn" to={"#"}>
+        <Link className="welcomePhotoBtn" to={"/categoty/4"}>
           Shop Now{" "}
         </Link>
       </div>

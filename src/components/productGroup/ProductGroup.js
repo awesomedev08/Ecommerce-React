@@ -43,11 +43,20 @@ function ProductGroup({ data, doneLoading }) {
           desc={product.desc}
           price={src.price}
           offerprice={src.offerprice}
+          Discount={src.Discount}
         />
       </Grid>
     );
   });
 
+  let [notFound, setnotFound] = useState("");
+  useEffect(() => {
+    if (Mydata.length < 1) {
+      setnotFound("not found");
+    } else {
+      setnotFound("");
+    }
+  }, [Mydata]);
   return (
     <div className="container ProductGroup-product-TOP">
       <div className="ProductGroup-product">
@@ -58,6 +67,7 @@ function ProductGroup({ data, doneLoading }) {
             columns={{ xs: 4, sm: 9, md: 12 }}
           >
             {loading ? productsMAP : <COMPLoading />}
+            {loading ? notFound : ""}
           </Grid>
         </Box>
       </div>

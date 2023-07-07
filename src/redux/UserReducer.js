@@ -12,7 +12,7 @@ export const UserReducer = createSlice({
       // console.log(item);
     },
 
-    remove: (state, action) => {
+    removeUser: (state, action) => {
       state.User = {};
     },
   },

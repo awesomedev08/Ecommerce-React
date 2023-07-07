@@ -210,6 +210,7 @@ export default function CategotyPage() {
           desc={product.desc}
           price={src.price}
           offerprice={src.offerprice}
+          Discount={src.Discount}
         />
       </Grid>
     );
@@ -238,7 +239,6 @@ export default function CategotyPage() {
               <button
                 className="filter-Mobile-filterby"
                 onClick={() => {
-                 
                   document
                     .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
                     .classList.remove("animationOutLeft");
@@ -255,7 +255,6 @@ export default function CategotyPage() {
               <button
                 className="filter-Mobile-btn-style"
                 onClick={() => {
-                
                   document
                     .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
                     .classList.remove("animationOutLeft");
@@ -272,7 +271,6 @@ export default function CategotyPage() {
               <button
                 className="filter-Mobile-btn-style"
                 onClick={() => {
-              
                   document
                     .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
                     .classList.remove("animationOutLeft");
@@ -289,7 +287,6 @@ export default function CategotyPage() {
               <button
                 className="filter-Mobile-btn-style"
                 onClick={(e) => {
-                  
                   document
                     .querySelector(".CategotyPage-product-filter-Mobile-Drawer")
                     .classList.remove("animationOutLeft");

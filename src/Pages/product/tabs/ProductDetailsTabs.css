@@ -19,6 +19,16 @@
 .ProductDetailsTabs-Video .css-19kzrtu {
   padding: 0;
 }
+.ProductDetailsTabs-desc img{
+display: block;
+margin: 3px auto;
+width: 50%;
+}
+.ProductDetailsTabs-Video-player {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
 /*  responsive */
 @media screen and (max-width: 728px) {
   .ProductDetailsTabs-Title {

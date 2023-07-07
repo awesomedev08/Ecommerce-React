@@ -1,0 +1,44 @@
+.Profile {
+  width: 100%;
+}
+
+.Profile h1 {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 30px;
+  color: var(--StormyStraitGreen);
+}
+.myInfo {
+  display: flex;
+  flex-direction: row;
+  row-gap: 20px;
+  height: 500px;
+  width: calc(100% - 10px);
+  margin-left: 10px;
+}
+.myInfo-input {
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+  row-gap: 20px;
+  text-transform: uppercase;
+}
+.myInfo-input span::after {
+  content: ":";
+}
+.myInfo-value {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+  row-gap: 20px;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 480px) {
+  .Profile span {
+    font-size: 13px;
+  }
+}

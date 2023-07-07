@@ -55,6 +55,7 @@ w NB# History of updates
 
 # /_ responsive _/
 
+- max-width: 1024px
 - max-width: 992px
 - max-width: 728px
 - max-width: 600px

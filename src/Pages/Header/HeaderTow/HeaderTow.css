@@ -32,8 +32,12 @@
   display: flex;
   align-items: center;
   padding: 6px;
+  padding-left: 11px;
 }
 
+.SearchInputDiv img {
+  padding-left: 6px;
+}
 /* responsive */
 
 @media screen and (max-width: 480px) {

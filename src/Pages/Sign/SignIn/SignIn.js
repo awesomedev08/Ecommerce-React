@@ -15,14 +15,15 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import UserLocal from "../../../hooks/UserLocal";
 
-import styles from "./SignUp.css";
+import style from "./SignIn.css";
 
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import axios from "axios";
 import { enqueueSnackbar } from "notistack";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../../redux/UserReducer";
-const baseUrl = `${process.env.REACT_APP_URL_API}auth/local/register`;
+
+const baseUrl = `${process.env.REACT_APP_URL_API}auth/local/`;
 
 const defaultTheme = createTheme({
   typography: {
@@ -30,7 +31,7 @@ const defaultTheme = createTheme({
   },
 });
 
-export default function SignUp() {
+export default function SignIn() {
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -58,7 +59,7 @@ export default function SignUp() {
         console.log(response.data);
         dispatch(addUser(response.data));
         //  localStorage.setItem("user", JSON.stringify(response.data));
-        enqueueSnackbar("New account registration succeeded", {
+        enqueueSnackbar("Logged in successfully", {
           variant: "success",
         });
 
@@ -87,19 +88,7 @@ export default function SignUp() {
   };
 
   let [Validation, setValidation] = React.useState({
-    firstName: {
-      error: false,
-      message: "",
-    },
-    lastName: {
-      error: false,
-      message: "",
-    },
-    username: {
-      error: false,
-      message: "",
-    },
-    email: {
+    identifier: {
       error: false,
       message: "",
     },
@@ -128,7 +117,7 @@ export default function SignUp() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign up
+              Sign in
             </Typography>
             <Box
               component="form"
@@ -137,132 +126,19 @@ export default function SignUp() {
               sx={{ mt: 3 }}
             >
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="firstName"
-                    required
-                    fullWidth
-                    id="firstName"
-                    label="First Name"
-                    autoFocus
-                    error={Validation.firstName.error}
-                    helperText={Validation.firstName.message}
-                    onChange={() => {
-                      setValidation({
-                        ...Validation,
-                        firstName: {
-                          error: false,
-                          message: "",
-                        },
-                      });
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="lastName"
-                    label="Last Name"
-                    name="lastName"
-                    autoComplete="family-name"
-                    error={Validation.lastName.error}
-                    helperText={Validation.lastName.message}
-                    onChange={() => {
-                      setValidation({
-                        ...Validation,
-                        lastName: {
-                          error: false,
-                          message: "",
-                        },
-                      });
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  {" "}
-                  <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">
-                      language
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      label="language"
-                      name="language"
-                      defaultValue={"En"}
-                      sx={{ width: "100%" }}
-                    >
-                      <MenuItem value={"En"}>En</MenuItem>
-                      <MenuItem value={"Fr"}>Fr</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    id="country"
-                    label="country"
-                    name="country"
-                    autoComplete="country"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    id="address"
-                    label="address"
-                    name="address"
-                    autoComplete="address"
-                    multiline
-                    minRows={2}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    id="phone"
-                    label="phone"
-                    name="phone"
-                    autoComplete="phone"
-                  />
-                </Grid>
                 <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth
-                    id="username"
-                    label="username"
-                    name="username"
-                    autoComplete="username"
-                    error={Validation.username.error}
-                    helperText={Validation.username.message}
+                    id="email or username"
+                    label="Email Address or Username"
+                    name="identifier"
+                    error={Validation.identifier.error}
+                    helperText={Validation.identifier.message}
                     onChange={() => {
                       setValidation({
                         ...Validation,
-                        username: {
-                          error: false,
-                          message: "",
-                        },
-                      });
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    error={Validation.email.error}
-                    helperText={Validation.email.message}
-                    onChange={() => {
-                      setValidation({
-                        ...Validation,
-                        email: {
+                        identifier: {
                           error: false,
                           message: "",
                         },
@@ -292,18 +168,6 @@ export default function SignUp() {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        name="allowExtraEmails"
-                        value={"true"}
-                        color="primary"
-                      />
-                    }
-                    label="I want to receive inspiration, marketing promotions and updates via email."
-                  />
-                </Grid>
               </Grid>
               <Button
                 type="submit"
@@ -315,8 +179,8 @@ export default function SignUp() {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="/SignIn" variant="body2">
-                    Already have an account? Sign in
+                  <Link href="/SignUp" variant="body2">
+                    Register a new account? Sign up
                   </Link>
                 </Grid>
               </Grid>

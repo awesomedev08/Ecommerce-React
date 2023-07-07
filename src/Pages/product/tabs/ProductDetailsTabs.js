@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import style from "./ProductDetailsTabs.css";
 import { withStyles } from "@mui/material";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -88,9 +89,9 @@ function ProductDetailsTabs({ Mydata }) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} component="div">
-        <div>
+        <div className="ProductDetailsTabs-desc">
           <h3>{MydataProduct.attributes?.name}</h3>
-          <p>{MydataProduct.attributes?.desc}</p>
+          <ReactMarkdown>{MydataProduct.attributes?.desc}</ReactMarkdown>
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -106,25 +107,19 @@ function ProductDetailsTabs({ Mydata }) {
           </p>
         </div>
       </TabPanel>
-      <TabPanel value={value} index={2}> <p>
-
-        Reviews </p>
+      <TabPanel value={value} index={2}>
+        {" "}
+        <p>Reviews </p>
       </TabPanel>
       <TabPanel className="ProductDetailsTabs-Video" value={value} index={3}>
-        <div>
-          <p>
-
-          Video
-          </p>
-          {MydataProduct.attributes?.Video ? (
+        <div className="ProductDetailsTabs-Video-player">
+        
+          {MydataProduct.attributes?.embedVideoYoutube ? (
             <iframe
-              width={window.addEventListener("resize", () => {
-                return window.screen.availWidth - 48;
-              })}
+              width={window.screen.availWidth - 48}
               height="315"
-              src={MydataProduct.attributes?.Video}
+              src={`https://www.youtube.com/embed/${MydataProduct.attributes?.embedVideoYoutube}`}
               title="YouTube video player"
-              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>

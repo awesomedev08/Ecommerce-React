@@ -1,0 +1,283 @@
+.Dashboard {
+  display: flex;
+  flex-direction: row;
+  border-radius: 25px;
+  border: 6px solid #fff;
+  background: #fff;
+  box-shadow: 0px 16px 40px 0px rgba(109, 141, 173, 0.15);
+  min-height: 1000px;
+}
+
+.Dashboard-1 {
+  flex-basis: 70%;
+  border-radius: 0px 25px 25px 0px;
+  flex-grow: 1;
+  background: #f8f7fc;
+  order: 2;
+}
+.Dashboard-2 {
+  flex-basis: 30%;
+  max-width: 200px;
+  background: #fff;
+  order: 1;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: column;
+}
+/* Dashboard-logout */
+.Dashboard-logout {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.Dashboard-2-nav a {
+  border-radius: 8px;
+  background: #f8faff;
+  box-shadow: 0px 4px 10px 0px rgba(175, 137, 255, 0.15);
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 22px;
+  color: #2a4178;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  width: 144px;
+  height: 40px;
+}
+.Dashboard-2-item a {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  column-gap: 20.99px;
+  margin-top: 50px;
+  color: #a7b7dd;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  justify-content: center;
+  cursor: pointer;
+}
+.Dashboard-2-item span {
+  padding-top: 3px;
+}
+.OrderStatus {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 63px;
+}
+.Awaiting-payment-confirmation,
+.Payment-completed-successfully,
+.prepared-delivery {
+  flex-basis: 33%;
+  max-width: 304px;
+  position: relative;
+}
+.Awaiting-payment-confirmation {
+  width: 304px;
+  height: 120px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #6baafc 0%, #305fec 100%);
+  box-shadow: 0px 2px 10px 0px rgba(175, 137, 255, 0.15);
+}
+.Payment-completed-successfully {
+  width: 304px;
+  height: 120px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #ef5e7a 0%, #d35385 100%);
+  box-shadow: 0px 2px 10px 0px rgba(175, 137, 255, 0.15);
+}
+.prepared-delivery {
+  width: 304px;
+  height: 120px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #d623fe 0%, #a530f2 100%);
+  box-shadow: 0px 2px 10px 0px rgba(175, 137, 255, 0.15);
+}
+.OrderStatus-text {
+  color: #fff;
+  font-family: cairo;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+  top: 21px;
+  left: 28px;
+}
+
+.OrderStatus-svg {
+  width: 86.766px;
+  height: 63.933px;
+  transform: rotate(-16.976deg);
+  position: absolute;
+  bottom: -8.75px;
+  left: 3.32px;
+}
+.OrderStatus-number {
+  color: #fff;
+  text-align: center;
+  font-family: cairo;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 5px;
+  right: 50px;
+}
+
+.Dashboard-2Open {
+  flex-basis: 30% !important;
+  max-width: 200px !important;
+
+  display: flex !important;
+  animation: Dashboard-2OpenKeyframes alternate forwards 400ms;
+}
+.Dashboard-2closed {
+  animation: Dashboard-2CloseKeyframes alternate forwards 400ms;
+}
+@keyframes Dashboard-2OpenKeyframes {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes Dashboard-2CloseKeyframes {
+  0% {
+    flex-basis: 30% !important;
+    max-width: 200px !important;
+    display: flex !important;
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.DashboardMenuOpenIcon {
+  display: none;
+}
+@media screen and (max-width: 1024px) {
+  .Awaiting-payment-confirmation,
+  .Payment-completed-successfully,
+  .prepared-delivery {
+    max-width: 304px;
+    position: relative;
+    width: 204px;
+    flex-basis: 31%;
+  }
+  .OrderStatus-text {
+    color: #fff;
+    font-family: cairo;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    position: absolute;
+    top: 5px;
+    left: 28px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .OrderStatus-number {
+    color: #fff;
+    text-align: center;
+    font-family: cairo;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: -23px;
+    right: 18px;
+  }
+  .OrderStatus-text {
+    color: #fff;
+    font-family: cairo;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    position: absolute;
+    top: 5px;
+    left: 13px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Dashboard-1 {
+    overflow: hidden;
+  }
+  .OrderStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 30px;
+    min-height: 1000px;
+    height: 500px;
+    align-items: center;
+    row-gap: 10px;
+  }
+  .Awaiting-payment-confirmation,
+  .Payment-completed-successfully,
+  .prepared-delivery {
+    max-width: 304px;
+    position: relative;
+    width: 204px;
+    flex-basis: 15%;
+  }
+
+  .Dashboard-2 {
+    flex-basis: 0%;
+    max-width: 0px;
+    transform: translateX(-100%);
+    display: none;
+  }
+  .DashboardMenuOpenIcon {
+    display: inline;
+    height: 60px;
+    width: 40px;
+  }
+  .DashboardMenuOpenIcon svg {
+    height: 60px;
+    width: 40px;
+  }
+}
+@media screen and (max-width: 426px) {
+  .OrderStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 30px;
+    min-height: 1000px;
+    height: 500px;
+    align-items: center;
+    row-gap: 10px;
+  }
+  .Awaiting-payment-confirmation,
+  .Payment-completed-successfully,
+  .prepared-delivery {
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    flex-basis: 15%;
+  }
+
+  .css-rqglhn-MuiTable-root {
+    width: 80% !important;
+  }
+}
