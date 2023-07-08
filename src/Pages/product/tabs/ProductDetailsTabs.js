@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import style from "./ProductDetailsTabs.css";
 import { withStyles } from "@mui/material";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import RatingReviews from "../RatingReviews/RatingReviews";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -108,8 +109,7 @@ function ProductDetailsTabs({ Mydata }) {
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        {" "}
-        <p>Reviews </p>
+      <RatingReviews />
       </TabPanel>
       <TabPanel className="ProductDetailsTabs-Video" value={value} index={3}>
         <div className="ProductDetailsTabs-Video-player">

@@ -32,6 +32,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import PaginationControlled from "../../components/PaginationControlled/PaginationControlled";
 // ==CategotyPage-product-filter-Mobile==
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -52,17 +53,20 @@ export default function CategotyPage() {
   if (params.filter === null || params.filter === undefined) {
     paramsFilters = "";
   }
+  // Pagination
+  const [Pagination, setPagination] = useState(1);
+  // ==Pagination==
   // searchParams api
   const [ParamsapiToUrl, setParamsToUrl] = useState("");
   let url = new URL(
-    ` ${process.env.REACT_APP_URL_API}prodects?filters[categoties][id][$eq]=${params.categotyId}&populate=*${ParamsapiToUrl}&${paramsFilters}`
+    ` ${process.env.REACT_APP_URL_API}prodects?filters[categoties][id][$eq]=${params.categotyId}&populate=*${ParamsapiToUrl}&${paramsFilters}&pagination[page]=${Pagination}`
   );
 
   const [Paramsapi, setParams] = useState(url.href);
 
   useEffect(() => {
     setParams(url.href);
-  }, [params.categotyId, ParamsapiToUrl, params.filter]);
+  }, [params.categotyId, ParamsapiToUrl, params.filter, Pagination]);
 
   // SearchParams("brands", "append" , "filters[brands][id][$eq]", src.id)
   const [ParamsapiFilters, setParamsFilters] = useState([]);
@@ -187,11 +191,11 @@ export default function CategotyPage() {
       .get(Paramsapi)
       .then(function (response) {
         //  console.log(response.data.data);
-        setMyData(response.data.data);
+        setMyData(response.data);
+        //console.log(response.data);
       })
       .then(() => {
         setloading(true);
-        //    console.log(Mydata);
       })
       .catch(function (error) {
         console.log(error);
@@ -199,7 +203,7 @@ export default function CategotyPage() {
   }, [Paramsapi]);
   // console.log(params.categotyId); // "hotspur"
 
-  let productsMAP = Mydata?.map((product) => {
+  let productsMAP = Mydata.data?.map((product) => {
     let src = product.attributes;
 
     // ==api==
@@ -333,7 +337,7 @@ export default function CategotyPage() {
               className="CategotyPage-product-filter-Mobile-Drawer"
             >
               <Filter
-                Mydata={Mydata}
+                Mydata={Mydata.data}
                 SearchParams={SearchParams}
                 setParamsToUrl={setParamsToUrl}
                 useFilter={useFilter}
@@ -345,7 +349,7 @@ export default function CategotyPage() {
         {/* ==CategotyPage-product-filter-Mobile== */}
         <div className="CategotyPage container">
           <Filter
-            Mydata={Mydata}
+            Mydata={Mydata.data}
             SearchParams={SearchParams}
             setParamsToUrl={setParamsToUrl}
             useFilter={useFilter}
@@ -363,7 +367,7 @@ export default function CategotyPage() {
             </Box>
           </div>
         </div>
-        {params.categotyId}
+        <PaginationControlled Mydata={Mydata} setPagination={setPagination} />
       </div>
     </>
   );

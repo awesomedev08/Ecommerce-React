@@ -1,4 +1,20 @@
-w NB# History of updates
+# [Preview Site](https://mohamed404eg.netlify.app/)
+
+[![Thumbnail](./public/Display/Thumbnail.png)](https://mohamed404eg.netlify.app/)
+
+# E-commerce Store React
+
+Welcome to our React-based E-commerce Store Project! As a web developer, your contributions to this project will be invaluable in creating an online store that offers customers a seamless and enjoyable shopping experience.
+
+Utilizing the React library, we are creating a highly interactive and responsive user interface that provides customers with a smooth and intuitive shopping experience.
+
+Our project utilizes the latest technologies and tools in React to create a modern and efficient online store. We are developing the frontend of the site using React, while utilizing a backend API to handle data storage and management. Our design focuses on creating an aesthetically pleasing user interface that is easy-to-use and provides customers with quick access to the products they are interested in.
+
+As a web developer, you will have the opportunity to contribute to the development of the site and help shape its functionality and design. Our site offers a range of features including product management, user management, order management, secure payment processing, and the ability to display promotions and discounts. We have implemented the latest security protocols to ensure that our customers' data is kept safe and secure.
+
+We will be continuously updating and improving the site to ensure that we are providing the best possible experience for our customers. Thank you for your interest in our React-based E-commerce Store Project, and we look forward to collaborating with you to deliver a top-notch online shopping experience.
+
+# History of updates
 
 # 8/6/2023 create project and start development
 
@@ -46,12 +62,14 @@ w NB# History of updates
 
 ## 5/7/2023 Product > work in Cart and payment methods
 
-## 5/8/2023 \*
+## 5/7/2023 \*
 
 - use alert
   enqueueSnackbar("New account registration succeeded", {
   variant: "success",
   });
+
+## 9/7/2023 The project has been completed
 
 # /_ responsive _/
 
@@ -76,3 +94,25 @@ w NB# History of updates
 --whiteFc: #fcfcfc;
 --StormyStraitGreen: #0d988c;
 --black:#000000;
+
+# enqueueSnackbar (notistack)
+
+variants:
+
+- default
+- success
+- error
+- warning
+- info
+
+# Technology Used
+
+- React
+- React Router
+- HTML
+- CSS
+- JavaScript
+- notistack
+- react redux
+- react-stripe
+- react mui

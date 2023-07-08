@@ -1,0 +1,16 @@
+.HoverRating-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.AllReviews {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-top: 20px;
+  text-align: start;
+}
+.AllReviews .css-3su884-MuiPaper-root { 
+    padding: 10px;
+
+}

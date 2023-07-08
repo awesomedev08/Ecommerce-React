@@ -41,25 +41,27 @@ function Wish() {
   }, [products]);
 
   const handlePayment = () => {
-    dispatch(addToCart(...products));
+    products.map((product) => {
+      dispatch(addToCart(product));
+    });
   };
   return (
     <div className="container">
-      <h2 className="cart-h2"> Shopping Wish </h2>
-      <div className="cart-p">
+      <h2 className="Wishcart-h2"> Shopping Wish </h2>
+      <div className="Wishcart-p">
         <span>You have {products.length} item in your Wish</span>
       </div>
 
-      <div className="cart">
-        <div className="cart-total-product">
-          <div className="cart-products">
+      <div className="Wishcart">
+        <div className="Wishcart-total-product">
+          <div className="Wishcart-products">
             {products.map((e) => (
-              <div key={e.id} className="cart-product-top">
-                <div className="cart-product-img-top">
-                  <img className="cart-product-img" src={e.img} alt="" />
+              <div key={e.id} className="Wishcart-product-top">
+                <div className="Wishcart-product-img-top">
+                  <img className="Wishcart-product-img" src={e.img} alt="" />
                 </div>
-                <div key={e.id} className="cart-product">
-                  <div className="cart-product-h4-p">
+                <div key={e.id} className="Wishcart-product">
+                  <div className="Wishcart-product-h4-p">
                     <h4>{e.name}</h4>
                     <p>{e.dec}</p>
                   </div>{" "}
@@ -97,14 +99,14 @@ function Wish() {
                         });
                       }}
                     >
-                      <DeleteOutlineIcon className="DeleteOutlineIcon" />
+                      <DeleteOutlineIcon className="WishDeleteOutlineIcon" />
                     </div>
                   </div>
                 </div>
               </div>
             ))}{" "}
             <div
-              className="reset-cart-mobile"
+              className="Wishreset-cart-mobile"
               onClick={() => {
                 dispatch(restWish());
 
@@ -117,12 +119,12 @@ function Wish() {
             </div>
           </div>
 
-          <div className="cart-total-top">
-            <div className="cart-total">
-              <span className="cart-total-text">Total</span>{" "}
-              <span className="cart-total-price">${total}</span>
+          <div className="Wishcart-total-top">
+            <div className="Wishcart-total">
+              <span className="Wishcart-total-text">Total</span>{" "}
+              <span className="Wishcart-total-price">${total}</span>
             </div>
-            <button className="cartCheckout" onClick={handlePayment}>
+            <button className="WishcartCheckout" onClick={handlePayment}>
               <span>${total}</span>
               <span>add all to cart</span>
               <ArrowRightAltIcon sx={{ color: "#fff" }} />{" "}
@@ -130,7 +132,7 @@ function Wish() {
           </div>
         </div>
         <div
-          className="reset-cart"
+          className="Wishreset-cart"
           onClick={() => {
             dispatch(restWish());
             enqueueSnackbar(`Cart Wish.`, {

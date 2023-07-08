@@ -311,6 +311,7 @@
   .CategotyPage-product {
     flex-basis: 100%;
     max-width: 100%;
+    margin-top: 10px;
   }
   .CategotyPage-product-filter {
     display: none;

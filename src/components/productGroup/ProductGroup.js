@@ -14,7 +14,7 @@ function ProductGroup({ data, doneLoading }) {
     if (doneLoading) {
       setloading(true);
     }
-  }, [doneLoading]);
+  }, [data]);
   // Loading
   const [loading, setloading] = useState(false);
   // ==Loading==
@@ -51,7 +51,7 @@ function ProductGroup({ data, doneLoading }) {
 
   let [notFound, setnotFound] = useState("");
   useEffect(() => {
-    if (Mydata.length < 1) {
+    if (Mydata?.length < 1) {
       setnotFound("not found");
     } else {
       setnotFound("");
