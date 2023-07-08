@@ -135,12 +135,12 @@
   border: solid 1px var(--StormyStraitGreen);
   border-radius: 100%;
   padding: 0px 4px;
-  
-  font-family: 'Cairo';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 18px;
+
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
 }
 /* responsive */
 @media screen and (max-width: 768px) {
@@ -165,7 +165,7 @@ line-height: 18px;
 }
 
 @media screen and (max-width: 480px) {
-  .HeaderThree-Cart span {
+  .HeaderThree-Cart-text {
     display: none;
   }
   .SignUp-SignIn {
@@ -175,10 +175,5 @@ line-height: 18px;
   }
   .HeaderThree-Cart {
     margin-left: 0;
-  }
-}
-@media screen and (max-width: 480px) {
-  .HeaderThree-Cart span {
-    display: none;
   }
 }

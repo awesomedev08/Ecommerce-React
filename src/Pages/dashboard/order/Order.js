@@ -13,8 +13,11 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import COMPLoading from "../../../components/loading/COMPLoading";
 
-function createData(id, products) {
+function createData(id, products, OrderStatus) {
   return {
     id,
     // {
@@ -25,6 +28,7 @@ function createData(id, products) {
     //     "Quantity": 1
     //   },
     products: products,
+    OrderStatus,
   };
 }
 
@@ -47,10 +51,6 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {row.id}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -74,12 +74,32 @@ function Row(props) {
                       <TableCell component="th" scope="row">
                         {historyRow.name}
                       </TableCell>
+                      <TableCell align="right">${historyRow.price}</TableCell>
                       <TableCell align="right">{historyRow.Quantity}</TableCell>
                       <TableCell align="right">
-                        {Math.round(historyRow.Quantity * row.price)}
+                        {Math.round(historyRow.Quantity * historyRow.price)}
                       </TableCell>
                     </TableRow>
                   ))}
+                  <tr>
+                    <TableCell align="right">
+                      Total price of all: $
+                      {row.products
+                        .map((historyRow) => {
+                          return [historyRow.Quantity * historyRow.price];
+                        })
+                        .reduce(
+                          (accumulator, currentValue) =>
+                            accumulator + +(+currentValue),
+                          0
+                        )}
+                    </TableCell>
+                  </tr>
+                  <tr>
+                    <TableCell align="right">
+                      Order Status: {row.OrderStatus}
+                    </TableCell>
+                  </tr>
                 </TableBody>
               </Table>
             </Box>
@@ -90,27 +110,39 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
-
-const rows = [createData(2, [])];
-
 export default function Order() {
+  const UserInfo = useSelector((state) => state.user.User);
+
+  React.useEffect(() => {
+    // console.log(UserInfo.user.email);
+  }, [UserInfo]);
+  const [Mydata, setMydata] = React.useState([]);
+  React.useEffect(() => {
+    axios
+      .get(
+        process.env.REACT_APP_URL_API +
+          `orders?filters[email][$eqi]=${UserInfo.user.email}`,
+        { headers: { Authorization: `Bearer ${UserInfo.jwt}` } }
+      )
+      .then(function (response) {
+        // console.log(response.data.data);
+        setMydata(response.data.data);
+      })
+
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [UserInfo]);
+
+  const rows = Mydata.map((data) => {
+    // console.log(data);
+    return createData(
+      data.id,
+      data.attributes.products,
+      data.attributes.OrderStatus
+    );
+  });
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">

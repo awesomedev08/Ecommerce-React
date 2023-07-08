@@ -16,6 +16,7 @@ import Dashboard from "./Pages/dashboard/Dashboard";
 import SignIn from "./Pages/Sign/SignIn/SignIn";
 import Search from "./Pages/Search/Search";
 import Order from "./Pages/dashboard/order/Order";
+import SinglesPage from "./Pages/SinglesPage/SinglesPage";
 
 // /success?success=false
 function App() {
@@ -40,6 +41,7 @@ function App() {
         ></Route>
         <Route path="Pagecustom/:key/:id" element={<Pagecustom />}></Route>
         <Route path="Search/:keyword/" element={<Search />}></Route>
+        <Route path="SinglesPage/:id/" element={<SinglesPage />}></Route>
       </Routes>
       <Footer />
     </div>

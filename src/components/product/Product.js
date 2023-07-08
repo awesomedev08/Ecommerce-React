@@ -135,7 +135,7 @@ function Product({ price, offerprice, Rating, id, img, name, desc, Discount }) {
                 name: name,
                 dec: desc,
                 img: img,
-                price: price || offerprice,
+                price: offerprice || price  ,
                 Quantity: 1,
               })
             );

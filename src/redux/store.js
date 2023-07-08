@@ -12,23 +12,24 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import UserReducer from "./UserReducer";
-const stripe = require("stripe")(
-  "sk_test_51NQGlbDkQuRyrh55Th67xB7CZMDchivwGUbTHBDlJVjQqejLoAAreVKBmHqYzN8OXcFRaDbob5u4wdDOsM6ul1gM00qXKVPj34"
-);
+import WishReducer from "./WishReducer";
+
 
 const persistConfig = {
   key: "root",
-  version: 1,
+  version: 2,
   storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, CartReducer);
 const persistedReducerUser = persistReducer(persistConfig, UserReducer);
+const persistedWishReducer = persistReducer(persistConfig, WishReducer);
 
 export const store = configureStore({
   reducer: {
     cart: persistedReducer,
     user: persistedReducerUser,
+    wish: persistedWishReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -49,12 +49,11 @@ function ProductGroupScroallLeft({ data, doneLoading }) {
     if (doneLoading) {
       setloading(true);
     }
-   // console.log(data);
-  }, [data]);
+    // console.log(data);
+  }, [data, doneLoading]);
   //console.log(Mydata?.data?.attributes?.prodects?.data);
 
   let i = 0;
-
   //console.log(Mydata?.data?.attributes?.prodects?.data);
   let productsMAP = Mydata?.data?.attributes?.prodects?.data.map((product) => {
     if (i >= 5) {
@@ -79,10 +78,14 @@ function ProductGroupScroallLeft({ data, doneLoading }) {
     <div className="container productGroupScroallLeft">
       <div className="productGroupScroallLeftOne">
         <h2>{Mydata?.data?.attributes?.title}</h2>
-        <Link className="productGroupScroallLeftOne-categoty-a" to={"/categoty/" + Mydata?.data?.id}>see more</Link>
+        <Link
+          className="productGroupScroallLeftOne-categoty-a"
+          to={"/categoty/" + Mydata?.data?.id}
+        >
+          see more
+        </Link>
       </div>
       <div className="productGroupScroallLeftOne-products" ref={products}>
-        {productsMAP}
         {loading ? productsMAP : <COMPLoading />}
       </div>
     </div>

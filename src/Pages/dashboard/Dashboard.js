@@ -11,6 +11,9 @@ import DashboardPremier from "./DashboardPremier";
 import Order from "./order/Order";
 import Profile from "./Profile/Profile";
 import { removeUser } from "../../redux/UserReducer";
+import axios from "axios";
+import RecommendIcon from "@mui/icons-material/Recommend";
+import Wish from "./Wish/Wish";
 function Dashboard() {
   const UserInfo = useSelector((state) => state.user.User);
   const dispatch = useDispatch();
@@ -72,11 +75,19 @@ function Dashboard() {
             <span>Profile</span>{" "}
           </Link>
         </div>
+        <div className="Dashboard-2-item">
+          {" "}
+          <Link to="/dashboard/wish">
+            <RecommendIcon sx={{ color: "#A7B7DD" }} />
+            <span>Wish</span>{" "}
+          </Link>
+        </div>
       </div>
       <div className="Dashboard-1">
         {sub === undefined ? <DashboardPremier /> : ""}
         {sub === "order" ? <Order /> : ""}
         {sub === "profile" ? <Profile /> : ""}
+        {sub === "wish" ? <Wish /> : ""}
       </div>
     </div>
   );

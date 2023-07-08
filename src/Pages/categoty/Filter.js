@@ -52,6 +52,7 @@ function Filter({
     let productsBrandsMAP = productsBrandsFilter?.map((product) => {
       let src = product?.attributes.brands.data[0];
       //  console.log(src);
+      
       return (
         <div key={src.id} className="productsBrandsMAP">
           <FormControlLabel
@@ -89,7 +90,6 @@ function Filter({
       );
     });
 
-
     if (!useFilter) {
       SetDataBrand(productsBrandsMAP);
     }
@@ -108,10 +108,9 @@ function Filter({
   };
 
   handleUseFilter = function (set) {
-    setParamsToUrl(" ");
-    SetUseFilter(set);
     FParamsFilters();
-    
+    setParamsToUrl("");
+    SetUseFilter(set);
     setChecked({
       checked1: false,
       checked2: false,
@@ -169,7 +168,7 @@ function Filter({
       >
         <CloseIcon />
       </span>
-   
+
       <span className="Product-filter-titel">Product Brand</span>
       <FormGroup>{dataBrand}</FormGroup>
       <span className="Product-filter-titel">Discount Offer</span>
@@ -180,7 +179,7 @@ function Filter({
               checked={checked.checked1}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked1: e.target.checked }));
-            
+
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams(
@@ -210,7 +209,7 @@ function Filter({
               checked={checked.checked2}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked2: e.target.checked }));
-             
+
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams(
@@ -242,7 +241,7 @@ function Filter({
               checked={checked.checked3}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked3: e.target.checked }));
-            
+
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams(
@@ -361,7 +360,6 @@ function Filter({
               checked={checked.checked7}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked7: e.target.checked }));
-             
 
                 SetUseFilter(true);
                 if (e.target.checked) {
@@ -382,7 +380,7 @@ function Filter({
               checked={checked.checked8}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked8: e.target.checked }));
-             
+
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams("price", "append", "filters[price][$gte]", 150);
@@ -406,7 +404,7 @@ function Filter({
               checked={checked.checked9}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked9: e.target.checked }));
-               
+
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams("price", "append", "filters[price][$gte]", 150);
@@ -431,7 +429,7 @@ function Filter({
               checked={checked.checked10}
               onClick={(e) => {
                 setChecked((v) => ({ ...v, checked10: e.target.checked }));
-           
+
                 SetUseFilter(true);
                 if (e.target.checked) {
                   SearchParams("price", "append", "filters[price][$gte]", 450);
@@ -468,7 +466,6 @@ function Filter({
             });
           }}
           onFocus={(e) => {
-           
             SearchParams(
               "price-search",
               "delete",
@@ -494,7 +491,7 @@ function Filter({
                   checked={checked.checked12}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked12: e.target.checked }));
-                   
+
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -524,7 +521,7 @@ function Filter({
                   checked={checked.checked13}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked13: e.target.checked }));
-                  
+
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -556,7 +553,7 @@ function Filter({
                   checked={checked.checked14}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked14: e.target.checked }));
-                   
+
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -586,7 +583,7 @@ function Filter({
                   checked={checked.checked15}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked15: e.target.checked }));
-                   
+
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -616,7 +613,7 @@ function Filter({
                   checked={checked.checked16}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked16: e.target.checked }));
-                 
+
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(
@@ -646,7 +643,7 @@ function Filter({
                   checked={checked.checked17}
                   onClick={(e) => {
                     setChecked((v) => ({ ...v, checked17: e.target.checked }));
-                   
+
                     SetUseFilter(true);
                     if (e.target.checked) {
                       SearchParams(

@@ -10,6 +10,7 @@
 
 .Dashboard-1 {
   flex-basis: 70%;
+  max-width: 70%;
   border-radius: 0px 25px 25px 0px;
   flex-grow: 1;
   background: #f8f7fc;

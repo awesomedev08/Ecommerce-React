@@ -25,6 +25,7 @@ import ProductGroupScroallLeft from "../../components/productGroupScroallLeft/Pr
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/CartReducer";
 import { enqueueSnackbar } from "notistack";
+import { addToWish } from "../../redux/WishReducer";
 
 function ProductDetails({ Mydata }) {
   const dispatch = useDispatch();
@@ -50,14 +51,13 @@ function ProductDetails({ Mydata }) {
         })
         .then(() => {
           setloadingCategoties(true);
-          //    console.log(Mydata);
         })
         .catch(function (error) {
           console.log(error);
         });
     }
     //  console.log(Mydata);
-  }, [MydataProduct]);
+  }, [Mydata]);
 
   let PremierImg = useRef();
   useEffect(() => {
@@ -322,7 +322,29 @@ function ProductDetails({ Mydata }) {
             >
               Add To cart
             </button>
-            <button className="ProductDetails-AddWish">Add To wish</button>
+            <button
+              className="ProductDetails-AddWish"
+              onClick={() => {
+                dispatch(
+                  addToWish({
+                    id: MydataProduct.id,
+                    name: MydataProduct.attributes.name,
+                    dec: MydataProduct.attributes.desc,
+                    img: MydataProduct.attributes?.image.data[0].attributes.url,
+                    price:
+                      MydataProduct.attributes?.offerprice ||
+                      MydataProduct.attributes?.price,
+                    Quantity,
+                  })
+                );
+
+                enqueueSnackbar(`Product added to Wish. ${Quantity} items.`, {
+                  variant: "success",
+                });
+              }}
+            >
+              Add To wish
+            </button>
           </div>
         </div>
       </div>

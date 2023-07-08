@@ -1,6 +1,60 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 function DashboardPremier() {
+  const UserInfo = useSelector((state) => state.user.User);
+
+  useEffect(() => {
+    if (!UserInfo.jwt) {
+      window.location.pathname = "/SignUp";
+    }
+  }, [UserInfo]);
+  const [Awaiting, setAwaiting] = useState([]);
+  const [successfully, setsuccessfully] = useState([]);
+  const [delivery, setdelivery] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        process.env.REACT_APP_URL_API +
+          `orders?filters[email][$eqi]=${UserInfo.user.email}&filters[OrderStatus][$eqi]=Awaiting payment confirmation`,
+        { headers: { Authorization: `Bearer ${UserInfo.jwt}` } }
+      )
+      .then(function (response) {
+        setAwaiting(response.data.data);
+      })
+
+      .catch(function (error) {
+        console.log(error);
+      });
+    axios
+      .get(
+        process.env.REACT_APP_URL_API +
+          `orders?filters[email][$eqi]=${UserInfo.user.email}&filters[OrderStatus][$eqi]=Payment completed successfully`,
+        { headers: { Authorization: `Bearer ${UserInfo.jwt}` } }
+      )
+      .then(function (response) {
+        setsuccessfully(response.data.data);
+      })
+
+      .catch(function (error) {
+        console.log(error);
+      });
+    axios
+      .get(
+        process.env.REACT_APP_URL_API +
+          `orders?filters[email][$eqi]=${UserInfo.user.email}&filters[OrderStatus][$eqi]=It is being prepared for delivery`,
+        { headers: { Authorization: `Bearer ${UserInfo.jwt}` } }
+      )
+      .then(function (response) {
+        setdelivery(response.data.data);
+      })
+
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="OrderStatus">
       <div className="Awaiting-payment-confirmation">
@@ -19,7 +73,7 @@ function DashboardPremier() {
             fillOpacity="0.13"
           />
         </svg>
-        <span className="OrderStatus-number">67</span>
+        <span className="OrderStatus-number">{Awaiting.length}</span>
       </div>
       <div className="Payment-completed-successfully">
         <span className="OrderStatus-text">Payment successfully</span>
@@ -37,7 +91,7 @@ function DashboardPremier() {
             fillOpacity="0.13"
           />
         </svg>{" "}
-        <span className="OrderStatus-number">09</span>
+        <span className="OrderStatus-number">{successfully.length}</span>
       </div>
       <div className="prepared-delivery">
         <span className="OrderStatus-text">prepared for delivery</span>
@@ -55,7 +109,7 @@ function DashboardPremier() {
             fillOpacity="0.13"
           />
         </svg>
-        <span className="OrderStatus-number">35</span>
+        <span className="OrderStatus-number">{delivery.length}</span>
       </div>
     </div>
   );

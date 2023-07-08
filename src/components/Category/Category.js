@@ -33,7 +33,7 @@ function Category() {
     return (
       <div
         onClick={() => {
-          if (params.categotyId) {
+          if (params.categotyId !== undefined) {
             handleUseFilter(false);
           }
         }}

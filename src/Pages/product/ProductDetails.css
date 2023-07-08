@@ -82,7 +82,7 @@
     text-transform: capitalize;
   }
 }
-.ProductDetails-Categories {
+.ProductDetails-Categories a{
   color: #0a4b65;
   font-size: 16px;
   font-family: Cairo;

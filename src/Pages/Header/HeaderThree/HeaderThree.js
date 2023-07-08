@@ -74,7 +74,7 @@ function HeaderThree({ Mylanguage, handleChangeMylanguage }) {
             <span className="productsCount">{productsCount}</span>
           </div>
 
-          <span>Cart</span>
+          <span className="HeaderThree-Cart-text">Cart</span>
         </Link>
       </div>
     </>

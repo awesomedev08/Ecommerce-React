@@ -27,9 +27,7 @@ function Profile() {
         console.log(error);
       });
   }, []);
-  useEffect(() => {
-    console.log(Mydata);
-  }, [Mydata]);
+
   return (
     <div className="Profile">
       <h1>Profile</h1>
@@ -42,6 +40,7 @@ function Profile() {
           <span>lastName</span>
           <span>allowExtraEmails</span>
           <span>country</span>
+          <span>address</span>
         </div>
         <div className="myInfo-value">
           <span>{Mydata.username ? Mydata.username : " not found "}</span>
@@ -52,7 +51,8 @@ function Profile() {
           <span>
             {Mydata.allowExtraEmails ? Mydata.allowExtraEmails : " not found "}
           </span>
-          <span>{Mydata.country}</span>
+          <span> {Mydata.country ? Mydata.country : " not found "}</span>
+          <span> {Mydata.address ? Mydata.address : " not found "}</span>
         </div>
       </div>
     </div>

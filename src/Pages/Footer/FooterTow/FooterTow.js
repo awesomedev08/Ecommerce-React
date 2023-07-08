@@ -48,12 +48,12 @@ function FooterTow() {
       <div className="FooterTow-List-One">
         <span>Most Popular Categories</span>
         <hr className="FooterTow-hr"></hr>
-        <ul>{listServicesMap}</ul>
+        <ul>{ListCategoriesMap}</ul>
       </div>
       <div className="FooterTow-List-Tow">
         <span>Customer Services</span>
         <hr className="FooterTow-hr"></hr>
-        <ul>{ListCategoriesMap}</ul>
+        <ul>{listServicesMap}</ul>
       </div>
     </div>
   );

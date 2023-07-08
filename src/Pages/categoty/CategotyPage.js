@@ -129,15 +129,24 @@ export default function CategotyPage() {
     // ==Cashback==
 
     if (name === "price-search") {
-      if (action === "append") {
-        //   console.log("append");
-        setParamsFilters((oldArray) => [
-          ...oldArray,
-          {
-            params: params,
-            value: value,
-          },
-        ]);
+      console.log(parseFloat(value));
+      if (parseFloat(value) !== 0) {
+        if (action === "append") {
+          setParamsFilters((oldArray) => [
+            ...oldArray,
+            {
+              params: params,
+              value: value,
+            },
+          ]);
+        }
+      } else {
+        setParamsFilters((oldArray) => {
+          const newArray = oldArray.filter((filter) => {
+            return filter.params !== params;
+          });
+          return newArray;
+        });
       }
       if (action === "delete") {
         setParamsFilters((oldArray) => {
