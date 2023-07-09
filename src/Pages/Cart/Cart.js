@@ -67,7 +67,7 @@ function Cart() {
         },
         {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjg4NTEyMzI1LCJleHAiOjE2OTExMDQzMjV9.aHmLxPyKFCZjaScC4y9jmISXP4DS87LDwOuR1WXk4Jc`,
+            Authorization: `Bearer ${UserInfo.jwt}`,
           },
         }
       );

@@ -69,7 +69,7 @@ export default function SignIn() {
       })
       .catch((error) => {
         console.log(error);
-        let errorMessage = error.response?.data.error.details.errors;
+        let errorMessage = error.response?.data?.error.details?.errors;
         errorMessage.forEach(async (error) => {
           console.log(error);
           // console.log(error.path[0]);

@@ -95,6 +95,35 @@ function ProductDetails({ Mydata }) {
   });
   //  ==mapImg==
 
+  // Share
+  function shareOnFacebook() {
+    const navUrl =
+      "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
+    return navUrl;
+  }
+  function shareOnLinkedin() {
+    const navUrl =
+      "https://www.linkedin.com/sharing/share-offsite/?url=" +
+      window.location.href;
+
+    return navUrl;
+  }
+
+  function shareNavigator() {
+    if (navigator.share) {
+      navigator.share({
+        url: window.location.href,
+      });
+    } else {
+      enqueueSnackbar("Your browser does not support sharing", {
+        variant: "info",
+      });
+    }
+  }
+
+  console.log(shareOnLinkedin());
+
+  // ==Share==
   return (
     <>
       <div className="container ProductDetails">
@@ -230,19 +259,19 @@ function ProductDetails({ Mydata }) {
           <div className="ProductDetails-Share">
             <span>Share</span>
             <div className="ProductDetails-Share-imgs">
-              <Link to="">
+              <Link to={shareOnFacebook()} target="_blank">
                 <img src={Facebook} alt="Facebook"></img>
               </Link>
-              <Link to="">
+              <Link to="" onClick={shareNavigator}>
                 <img src={Instagram} alt="Instagram"></img>
               </Link>
-              <Link to="">
+              <Link to="" onClick={shareNavigator}>
                 <img src={github} alt="github"></img>
               </Link>
-              <Link to="">
+              <Link to={shareOnLinkedin()} target="_blank">
                 <img src={Linkedin} alt="Linkedin"></img>
               </Link>
-              <Link to="">
+              <Link to="" onClick={shareNavigator}>
                 <img src={Youtube} alt="Youtube"></img>
               </Link>
             </div>
