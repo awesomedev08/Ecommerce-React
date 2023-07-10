@@ -6,14 +6,13 @@ import { useEffect } from "react";
 
 import axios from "axios";
 import { useState } from "react";
-const baseUrl = "http://localhost:1337/api/menu-seconds?populate=*";
 
 function MenuSecond() {
   let [MenuSecondData, setMenuSecondData] = useState([]);
   let menuMAP;
   useEffect(() => {
     axios
-      .get(baseUrl)
+      .get(`${process.env.REACT_APP_URL_API}menu-seconds?populate=*`)
       .then(function (response) {
         setMenuSecondData(response.data.data);
       })

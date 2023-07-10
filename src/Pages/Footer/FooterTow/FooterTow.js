@@ -4,14 +4,13 @@ import style from "./FooterTow.css";
 import { Link } from "react-router-dom";
 import FooterOneMedia from "../FooterOne/FooterOneMedia/FooterOneMedia";
 
-const baseUrl = "http://localhost:1337/api/";
 
 function FooterTow() {
   let [ListServices, setListServices] = useState([]);
   let [ListCategories, setListCategories] = useState([]);
   useEffect(() => {
     axios
-      .get(`${baseUrl}footer-list-services/`)
+      .get(`${process.env.REACT_APP_URL_API}footer-list-services/`)
       .then((response) => {
         setListServices(response.data.data);
       })
@@ -19,7 +18,7 @@ function FooterTow() {
         console.log(error);
       });
     axios
-      .get(`${baseUrl}footer-lists`)
+      .get(`${process.env.REACT_APP_URL_API}footer-lists`)
       .then((response) => {
         setListCategories(response.data.data);
       })
