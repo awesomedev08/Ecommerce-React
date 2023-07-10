@@ -59,7 +59,7 @@ function Cart() {
       const stripe = await stripePromise;
 
       const res = await axios.post(
-        "http://localhost:1337/api/orders",
+        `${process.env.REACT_APP_URL_API}orders`,
         {
           products,
           email: UserInfo.user.email,
