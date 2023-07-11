@@ -1,6 +1,6 @@
-# [Preview Site](https://mohamed404eg.netlify.app/)
+# [Preview Site](https://e-r.netlify.app/)
 
-[![Thumbnail](./public/Display/Thumbnail.png)](https://mohamed404eg.netlify.app/)
+[![Thumbnail](./public/Display/Thumbnail.png)](https://e-r.netlify.app/)
 
 # E-commerce Store React
 
@@ -20,7 +20,6 @@ We will be continuously updating and improving the site to ensure that we are pr
 
 # 10/6/2023 90 footer completed & backend api strapi created
 
-- URL https://api-ecommercereact.onrender.com/
 - Files on GitHub https://github.com/mohamed404eg/api-ecommercereact
 
 # 11/6/2023 A new account registration page has been created
