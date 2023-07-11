@@ -39,25 +39,25 @@ function ProductDetails({ Mydata }) {
 
   useEffect(() => {
     setloadingCategoties(false);
-    // console.log(params.itemId);
-
-    axios
-      .get(
-        `${process.env.REACT_APP_URL_API}categoties/${MydataProduct.data.attributes?.categoties?.data[0].id}/?populate=prodects.image`
-      )
-      .then(function (response) {
-        //  console.log(response.data.data);
-        setMyDataCategoties(response.data);
-      })
-      .then(() => {
-        setloadingCategoties(true);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
+    if (MydataProduct.attributes !== undefined) {
+      axios
+        .get(
+          `${process.env.REACT_APP_URL_API}categoties/${MydataProduct.attributes?.categoties?.data[0].id}/?populate=prodects.image`
+        )
+        .then(function (response) {
+          //  console.log(response.data.data);
+          setMyDataCategoties(response.data);
+        })
+        .then(() => {
+          setloadingCategoties(true);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
     //  console.log(Mydata);
-  }, [Mydata]);
+  }, [Mydata, MydataProduct.attributes]);
+  console.log(MydataCategoties);
 
   let PremierImg = useRef();
   useEffect(() => {
