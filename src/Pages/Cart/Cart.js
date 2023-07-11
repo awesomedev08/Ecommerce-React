@@ -15,7 +15,6 @@ import {
   restCart,
 } from "../../redux/CartReducer";
 
-import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { enqueueSnackbar } from "notistack";
 
@@ -44,8 +43,10 @@ function Cart() {
     }
   }, [products]);
 
-  const stripePromise = loadStripe(
-    "pk_test_51NQGlbDkQuRyrh55KHZh0M5BJ6PqCgiaqCGMBL8wC7DodnSDefhvJxsU8OVUAw8y1nYD2ulZLdY2AXWLcKPufYJN00VayKSIa1"
+  const stripePromise = import("@stripe/stripe-js").then((module) =>
+    module.loadStripe(
+      "pk_test_51NQGlbDkQuRyrh55KHZh0M5BJ6PqCgiaqCGMBL8wC7DodnSDefhvJxsU8OVUAw8y1nYD2ulZLdY2AXWLcKPufYJN00VayKSIa1"
+    )
   );
 
   const handlePayment = async () => {
@@ -57,7 +58,7 @@ function Cart() {
         }
       );
       const stripe = await stripePromise;
-
+      console.log(stripePromise);
       const res = await axios.post(
         `${process.env.REACT_APP_URL_API}orders`,
         {
