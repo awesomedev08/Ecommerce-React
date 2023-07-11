@@ -68,24 +68,6 @@ export default function SignIn() {
         }, 100);
       })
       .catch((error) => {
-        console.log(error);
-        let errorMessage = error.response?.data?.error.details?.errors;
-
-        errorMessage.forEach(async (error) => {
-          console.log(error);
-          // console.log(error.path[0]);
-          let value = error.message;
-          let nameError = await error.path[0];
-          //console.log(nameError);
-          setValidation((prevValidation) => ({
-            ...prevValidation,
-            [nameError]: {
-              error: true,
-              message: value,
-            },
-          }));
-        });
-
         if (
           error.response?.data?.error.message ===
           "Invalid identifier or password"
@@ -97,10 +79,27 @@ export default function SignIn() {
               message: error.response?.data?.error.message,
             },
             password: {
-              error: false,
+              error: true,
               message: error.response?.data?.error.message,
             },
           }));
+        } else {
+          let errorMessage = error.response?.data?.error.details?.errors;
+
+          errorMessage.forEach(async (error) => {
+            console.log(error);
+            // console.log(error.path[0]);
+            let value = error.message;
+            let nameError = await error.path[0];
+            //console.log(nameError);
+            setValidation((prevValidation) => ({
+              ...prevValidation,
+              [nameError]: {
+                error: true,
+                message: value,
+              },
+            }));
+          });
         }
       });
   };
