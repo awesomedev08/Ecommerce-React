@@ -40,22 +40,22 @@ function ProductDetails({ Mydata }) {
   useEffect(() => {
     setloadingCategoties(false);
     // console.log(params.itemId);
-    if (MydataProduct.attributes?.categoties?.data[0].id !== undefined) {
-      axios
-        .get(
-          `${process.env.REACT_APP_URL_API}categoties/${MydataProduct.attributes?.categoties?.data[0].id}/?populate=prodects.image`
-        )
-        .then(function (response) {
-          //  console.log(response.data.data);
-          setMyDataCategoties(response.data);
-        })
-        .then(() => {
-          setloadingCategoties(true);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+
+    axios
+      .get(
+        `${process.env.REACT_APP_URL_API}categoties/${MydataProduct.data.attributes?.categoties?.data[0].id}/?populate=prodects.image`
+      )
+      .then(function (response) {
+        //  console.log(response.data.data);
+        setMyDataCategoties(response.data);
+      })
+      .then(() => {
+        setloadingCategoties(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
     //  console.log(Mydata);
   }, [Mydata]);
 
