@@ -57,7 +57,6 @@ function ProductDetails({ Mydata }) {
     }
     //  console.log(Mydata);
   }, [Mydata, MydataProduct.attributes]);
-  console.log(MydataCategoties);
 
   let PremierImg = useRef();
   useEffect(() => {
@@ -121,7 +120,6 @@ function ProductDetails({ Mydata }) {
     }
   }
 
-  console.log(shareOnLinkedin());
 
   // ==Share==
   return (
