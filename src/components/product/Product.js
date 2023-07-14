@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/CartReducer";
 import { enqueueSnackbar } from "notistack";
 function Product({ price, offerprice, Rating, id, img, name, desc, Discount }) {
+
   //console.log(name.substring(0,30));
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart.products);
@@ -135,7 +136,7 @@ function Product({ price, offerprice, Rating, id, img, name, desc, Discount }) {
                 name: name,
                 dec: desc,
                 img: img,
-                price: offerprice || price  ,
+                price: offerprice || price,
                 Quantity: 1,
               })
             );

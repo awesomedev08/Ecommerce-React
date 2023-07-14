@@ -77,7 +77,6 @@
   }
 
   .FooterTow {
-    margin: -12px;
     padding: 12px;
     background-color: var(--InkBlue);
     column-gap: 20px;

@@ -20,8 +20,9 @@ import styles from "./SignUp.css";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import axios from "axios";
 import { enqueueSnackbar } from "notistack";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../../redux/UserReducer";
+
 const baseUrl = `${process.env.REACT_APP_URL_API}auth/local/register`;
 
 const defaultTheme = createTheme({
@@ -31,6 +32,7 @@ const defaultTheme = createTheme({
 });
 
 export default function SignUp() {
+  const userInfo = useSelector((state) => state.user.User);
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -109,9 +111,9 @@ export default function SignUp() {
     },
   });
 
-  //console.log(UserLocal());
+  console.log(UserLocal());
 
-  if (UserLocal() === null) {
+  if (!userInfo.jwt) {
     return (
       <ThemeProvider theme={defaultTheme}>
         <Container component="main" maxWidth="xs" className="DivSignUp">

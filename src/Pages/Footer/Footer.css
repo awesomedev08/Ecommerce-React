@@ -29,7 +29,6 @@
     row-gap: 17px;
   }
   .FooterTowMedia-sm {
-    margin-top: 12px;
     display: block;
     background-color: #0d988c;
     padding: 0 20px;
@@ -55,7 +54,7 @@
   }
 
   .FooterBottom {
-display: none;
+    display: none;
   }
 }
 

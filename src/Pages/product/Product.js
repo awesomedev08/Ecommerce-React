@@ -6,8 +6,15 @@ import axios from "axios";
 import COMPLoading from "../../components/loading/COMPLoading";
 import ProductDetails from "./ProductDetails";
 function Product() {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
   let params = useParams();
-//  console.log(params.itemId); // "hotspur"
+  //  console.log(params.itemId); // "hotspur"
 
   const [Mydata, setMyData] = useState([]);
   const [loading, setloading] = useState(false);
@@ -33,13 +40,7 @@ function Product() {
   }, [params.itemId]);
 
   return (
-    <div>
-      {loading ? (
-        <ProductDetails Mydata={Mydata}  />
-      ) : (
-        <COMPLoading />
-      )}
-    </div>
+    <div>{loading ? <ProductDetails Mydata={Mydata} /> : <COMPLoading />}</div>
   );
 }
 
