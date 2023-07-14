@@ -8,8 +8,8 @@ import whatsapp from "../../../assets/icon/Media/ant-design_whats-app-outlined.s
 import FooterOneMedia from "./FooterOneMedia/FooterOneMedia";
 function FooterOne() {
   return (
-    <div className="FooterOne container">
-      <div className="FooterOne-Contact">
+    <div className="FooterOne ">
+      <div className="FooterOne-Contact container">
         <img src={Logo} className="FooterOne-Contact-Logo" alt=""></img>
         <div className="FooterOne-Contact-div-ContactUs">
           <span className="FooterOne-Contact-span-ContactUs">Contact Us</span>
@@ -35,7 +35,7 @@ function FooterOne() {
         </div>
       </div>
 
-<div className="FooterOneMedia-lg">
+<div className="FooterOneMedia-lg container">
 
       <FooterOneMedia />
 </div>
