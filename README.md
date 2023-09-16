@@ -20,7 +20,7 @@ We will be continuously updating and improving the site to ensure that we are pr
 
 # 10/6/2023 90 footer completed & backend api strapi created
 
-- Files on GitHub https://github.com/mohamed404eg/api-ecommercereact
+- Files on GitHub https://github.com/awesomedev08/Ecommerce-React
 
 # 11/6/2023 A new account registration page has been created
 
